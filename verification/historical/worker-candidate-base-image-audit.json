@@ -1,0 +1,4029 @@
+{
+  "SchemaVersion": 2,
+  "Trivy": {
+    "Version": "0.75.0"
+  },
+  "ReportID": "01a10a3a-370f-76f1-b5e6-8dcf7f467702",
+  "CreatedAt": "2026-10-05T00:02:29.775457028-04:00",
+  "ArtifactID": "sha256:66f06bfcc7aeb0ae753b5fec6ed8cbd99629d4e5ae126c636bf3ea341132aee7",
+  "ArtifactName": "node:26-alpine3.23@sha256:c3c6e314fd42e41962360b2482fc18d150beb47976c3aa7b8b9689d7ef42a5c2",
+  "ArtifactType": "container_image",
+  "Metadata": {
+    "Size": 184781312,
+    "OS": {
+      "Family": "alpine",
+      "Name": "3.23.6"
+    },
+    "ImageID": "sha256:c3c6e314fd42e41962360b2482fc18d150beb47976c3aa7b8b9689d7ef42a5c2",
+    "DiffIDs": [
+      "sha256:e63b02c2b5c761df2cb95e657d744f27d95da4e051235a13c80b88cd68eab188",
+      "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709",
+      "sha256:4653aa22dad2ac3f4f9739d77e3d37cb9ed2780fbb524ce73ad425a5ed61b7f2"
+    ],
+    "RepoTags": [
+      "node@sha256:c3c6e314fd42e41962360b2482fc18d150beb47976c3aa7b8b9689d7ef42a5c2"
+    ],
+    "RepoDigests": [
+      "node@sha256:c3c6e314fd42e41962360b2482fc18d150beb47976c3aa7b8b9689d7ef42a5c2"
+    ],
+    "Reference": "node@sha256:c3c6e314fd42e41962360b2482fc18d150beb47976c3aa7b8b9689d7ef42a5c2",
+    "ImageConfig": {
+      "architecture": "amd64",
+      "created": "2026-09-22T18:51:35.583077954Z",
+      "history": [
+        {
+          "created": "2026-09-17T20:37:33Z",
+          "created_by": "ADD alpine-minirootfs-3.23.6-x86_64.tar.gz / # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-09-17T20:37:33Z",
+          "created_by": "CMD [\"/bin/sh\"]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-09-22T18:51:35Z",
+          "created_by": "ENV NODE_VERSION=26.10.0",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-09-22T18:51:35Z",
+          "created_by": "RUN /bin/sh -c addgroup -g 1000 node     \u0026\u0026 adduser -u 1000 -G node -s /bin/sh -D node     \u0026\u0026 apk add --no-cache         libstdc++     \u0026\u0026 apk add --no-cache --virtual .build-deps         curl     \u0026\u0026 ARCH= OPENSSL_ARCH='linux*' \u0026\u0026 alpineArch=\"$(apk --print-arch)\"       \u0026\u0026 case \"${alpineArch##*-}\" in         x86_64) ARCH='x64' CHECKSUM=\"e91679de73f48e4f107fc968bec351dea6676c7f54af004280a7baaf5c6d88c5\" OPENSSL_ARCH=linux-x86_64;;         aarch64) OPENSSL_ARCH=linux-aarch64;;         *) echo \"unsupported architecture\"; exit 1 ;;       esac   \u0026\u0026 if [ -n \"${CHECKSUM}\" ]; then     set -eu;     curl -fsSLO --compressed \"https://unofficial-builds.nodejs.org/download/release/v$NODE_VERSION/node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz\";     echo \"$CHECKSUM  node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz\" | sha256sum -c -       \u0026\u0026 tar -xJf \"node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz\" -C /usr/local --strip-components=1 --no-same-owner       \u0026\u0026 ln -s /usr/local/bin/node /usr/local/bin/nodejs;   else     echo \"Building from source\"     \u0026\u0026 apk add --no-cache --virtual .build-deps-full         binutils-gold         g++         gcc         gnupg         libgcc         linux-headers         make         python3         py-setuptools         rust         cargo     \u0026\u0026 export GNUPGHOME=\"$(mktemp -d)\"     \u0026\u0026 for key in       5BE8A3F6C8A5C01D106C0AD820B1A390B168D356       DD792F5973C6DE52C432CBDAC77ABFA00DDBF2B7       CC68F5A3106FF448322E48ED27F5E38D5B0A215F       890C08DB8579162FEE0DF9DB8BEAB4DFCF555EF4       C82FA3AE1CBEDC6BE46B9360C43CEC45C17AB93C       108F52B48DB57BB0CC439B2997B01419BD92F80A       655F3B5C1FB3FA8D1A0CA6BDE4A7D232B936D2FD       A363A499291CBBC940DD62E41F10027AF002F8B0     ; do       { gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys \"$key\" \u0026\u0026 gpg --batch --fingerprint \"$key\"; } ||       { gpg --batch --keyserver keyserver.ubuntu.com --recv-keys \"$key\" \u0026\u0026 gpg --batch --fingerprint \"$key\"; } ;     done     \u0026\u0026 curl -fsSLO --compressed \"https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION.tar.xz\"     \u0026\u0026 curl -fsSLO --compressed \"https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc\"     \u0026\u0026 gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc     \u0026\u0026 gpgconf --kill all     \u0026\u0026 rm -rf \"$GNUPGHOME\"     \u0026\u0026 grep \" node-v$NODE_VERSION.tar.xz\\$\" SHASUMS256.txt | sha256sum -c -     \u0026\u0026 tar -xf \"node-v$NODE_VERSION.tar.xz\"     \u0026\u0026 cd \"node-v$NODE_VERSION\"     \u0026\u0026 ./configure     \u0026\u0026 make -j$(getconf _NPROCESSORS_ONLN) V=     \u0026\u0026 make install     \u0026\u0026 apk del .build-deps-full     \u0026\u0026 cd ..     \u0026\u0026 rm -Rf \"node-v$NODE_VERSION\"     \u0026\u0026 rm \"node-v$NODE_VERSION.tar.xz\" SHASUMS256.txt.asc SHASUMS256.txt;   fi   \u0026\u0026 rm -f \"node-v$NODE_VERSION-linux-$ARCH-musl.tar.xz\"   \u0026\u0026 find /usr/local/include/node/openssl/archs -mindepth 1 -maxdepth 1 ! -name \"$OPENSSL_ARCH\" -exec rm -rf {} \\;   \u0026\u0026 apk del .build-deps   \u0026\u0026 node --version   \u0026\u0026 npm --version   \u0026\u0026 rm -rf /tmp/* # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-09-22T18:51:35Z",
+          "created_by": "COPY docker-entrypoint.sh /usr/local/bin/ # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2026-09-22T18:51:35Z",
+          "created_by": "ENTRYPOINT [\"docker-entrypoint.sh\"]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2026-09-22T18:51:35Z",
+          "created_by": "CMD [\"node\"]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        }
+      ],
+      "os": "linux",
+      "rootfs": {
+        "type": "layers",
+        "diff_ids": [
+          "sha256:e63b02c2b5c761df2cb95e657d744f27d95da4e051235a13c80b88cd68eab188",
+          "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709",
+          "sha256:4653aa22dad2ac3f4f9739d77e3d37cb9ed2780fbb524ce73ad425a5ed61b7f2"
+        ]
+      },
+      "config": {
+        "Cmd": [
+          "node"
+        ],
+        "Entrypoint": [
+          "docker-entrypoint.sh"
+        ],
+        "Env": [
+          "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+          "NODE_VERSION=26.10.0"
+        ],
+        "WorkingDir": "/"
+      }
+    },
+    "Layers": [
+      {
+        "Size": 8699904,
+        "Digest": "sha256:d0c1d894c237d8192cbcd37e435031ad4eddec173299568a5a05869c2e40dfa3",
+        "DiffID": "sha256:e63b02c2b5c761df2cb95e657d744f27d95da4e051235a13c80b88cd68eab188"
+      },
+      {
+        "Size": 176077824,
+        "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+        "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+      },
+      {
+        "Size": 3584,
+        "Digest": "sha256:84e786116bfe5d69d25c9a90e13a6cd649d0679eaf512f12c239cf36362928f1",
+        "DiffID": "sha256:4653aa22dad2ac3f4f9739d77e3d37cb9ed2780fbb524ce73ad425a5ed61b7f2"
+      }
+    ]
+  },
+  "Results": [
+    {
+      "Target": "node:26-alpine3.23@sha256:c3c6e314fd42e41962360b2482fc18d150beb47976c3aa7b8b9689d7ef42a5c2 (alpine 3.23.6)",
+      "Class": "os-pkgs",
+      "Type": "alpine",
+      "Packages": [
+        {
+          "ID": "alpine-baselayout@3.7.2-r0",
+          "Name": "alpine-baselayout",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/alpine-baselayout@3.7.2-r0?arch=x86_64\u0026distro=3.23.6",
+            "UID": "ff3090489ca40326"
+          },
+          "Version": "3.7.2-r0",
+          "Arch": "x86_64",
+          "SrcName": "alpine-baselayout",
+          "SrcVersion": "3.7.2-r0",
+          "Licenses": [
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "alpine-baselayout-data@3.7.2-r0",
+            "busybox-binsh@1.37.0-r30"
+          ],
+          "Layer": {
+            "Digest": "sha256:d0c1d894c237d8192cbcd37e435031ad4eddec173299568a5a05869c2e40dfa3",
+            "DiffID": "sha256:e63b02c2b5c761df2cb95e657d744f27d95da4e051235a13c80b88cd68eab188"
+          },
+          "Digest": "sha1:545aa6f291209af89932b761d9e422c2778596cc",
+          "InstalledFiles": [
+            "etc/motd",
+            "etc/crontabs/root",
+            "etc/modprobe.d/aliases.conf",
+            "etc/modprobe.d/blacklist.conf",
+            "etc/modprobe.d/i386.conf",
+            "etc/profile.d/20locale.sh",
+            "etc/profile.d/README",
+            "etc/profile.d/color_prompt.sh.disabled",
+            "usr/lib/sysctl.d/00-alpine.conf",
+            "var/lock",
+            "var/run",
+            "var/spool/mail",
+            "var/spool/cron/crontabs"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "alpine-baselayout-data@3.7.2-r0",
+          "Name": "alpine-baselayout-data",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/alpine-baselayout-data@3.7.2-r0?arch=x86_64\u0026distro=3.23.6",
+            "UID": "78c0ed61d7df9a7e"
+          },
+          "Version": "3.7.2-r0",
+          "Arch": "x86_64",
+          "SrcName": "alpine-baselayout",
+          "SrcVersion": "3.7.2-r0",
+          "Licenses": [
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "Layer": {
+            "Digest": "sha256:d0c1d894c237d8192cbcd37e435031ad4eddec173299568a5a05869c2e40dfa3",
+            "DiffID": "sha256:e63b02c2b5c761df2cb95e657d744f27d95da4e051235a13c80b88cd68eab188"
+          },
+          "Digest": "sha1:85816632dbce07ba7e9e7a629fa59eddbd1687fb",
+          "InstalledFiles": [
+            "etc/fstab",
+            "etc/group",
+            "etc/hostname",
+            "etc/hosts",
+            "etc/inittab",
+            "etc/modules",
+            "etc/mtab",
+            "etc/nsswitch.conf",
+            "etc/passwd",
+            "etc/profile",
+            "etc/protocols",
+            "etc/services",
+            "etc/shadow",
+            "etc/shells",
+            "etc/sysctl.conf"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "alpine-keys@2.6-r0",
+          "Name": "alpine-keys",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/alpine-keys@2.6-r0?arch=x86_64\u0026distro=3.23.6",
+            "UID": "2c7cb90de388aa7d"
+          },
+          "Version": "2.6-r0",
+          "Arch": "x86_64",
+          "SrcName": "alpine-keys",
+          "SrcVersion": "2.6-r0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "Layer": {
+            "Digest": "sha256:d0c1d894c237d8192cbcd37e435031ad4eddec173299568a5a05869c2e40dfa3",
+            "DiffID": "sha256:e63b02c2b5c761df2cb95e657d744f27d95da4e051235a13c80b88cd68eab188"
+          },
+          "Digest": "sha1:5c45a821cd6b84d543bbd7ff12a7de1855c5cd13",
+          "InstalledFiles": [
+            "etc/apk/keys/alpine-devel@lists.alpinelinux.org-4a6a0840.rsa.pub",
+            "etc/apk/keys/alpine-devel@lists.alpinelinux.org-5261cecb.rsa.pub",
+            "etc/apk/keys/alpine-devel@lists.alpinelinux.org-6165ee59.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-4a6a0840.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-5243ef4b.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-524d27bb.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-5261cecb.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-58199dcc.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-58cbb476.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-58e4f17d.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-5e69ca50.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-60ac2099.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-6165ee59.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-61666e3f.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616a9724.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616abc23.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616ac3bc.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616adfeb.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-616db30d.rsa.pub",
+            "usr/share/apk/keys/alpine-devel@lists.alpinelinux.org-66ba20fe.rsa.pub",
+            "usr/share/apk/keys/aarch64/alpine-devel@lists.alpinelinux.org-58199dcc.rsa.pub",
+            "usr/share/apk/keys/aarch64/alpine-devel@lists.alpinelinux.org-616ae350.rsa.pub",
+            "usr/share/apk/keys/armhf/alpine-devel@lists.alpinelinux.org-524d27bb.rsa.pub",
+            "usr/share/apk/keys/armhf/alpine-devel@lists.alpinelinux.org-616a9724.rsa.pub",
+            "usr/share/apk/keys/armv7/alpine-devel@lists.alpinelinux.org-524d27bb.rsa.pub",
+            "usr/share/apk/keys/armv7/alpine-devel@lists.alpinelinux.org-616adfeb.rsa.pub",
+            "usr/share/apk/keys/loongarch64/alpine-devel@lists.alpinelinux.org-66ba20fe.rsa.pub",
+            "usr/share/apk/keys/mips64/alpine-devel@lists.alpinelinux.org-5e69ca50.rsa.pub",
+            "usr/share/apk/keys/ppc64le/alpine-devel@lists.alpinelinux.org-58cbb476.rsa.pub",
+            "usr/share/apk/keys/ppc64le/alpine-devel@lists.alpinelinux.org-616abc23.rsa.pub",
+            "usr/share/apk/keys/riscv64/alpine-devel@lists.alpinelinux.org-60ac2099.rsa.pub",
+            "usr/share/apk/keys/riscv64/alpine-devel@lists.alpinelinux.org-616db30d.rsa.pub",
+            "usr/share/apk/keys/s390x/alpine-devel@lists.alpinelinux.org-58e4f17d.rsa.pub",
+            "usr/share/apk/keys/s390x/alpine-devel@lists.alpinelinux.org-616ac3bc.rsa.pub",
+            "usr/share/apk/keys/x86/alpine-devel@lists.alpinelinux.org-4a6a0840.rsa.pub",
+            "usr/share/apk/keys/x86/alpine-devel@lists.alpinelinux.org-5243ef4b.rsa.pub",
+            "usr/share/apk/keys/x86/alpine-devel@lists.alpinelinux.org-61666e3f.rsa.pub",
+            "usr/share/apk/keys/x86_64/alpine-devel@lists.alpinelinux.org-4a6a0840.rsa.pub",
+            "usr/share/apk/keys/x86_64/alpine-devel@lists.alpinelinux.org-5261cecb.rsa.pub",
+            "usr/share/apk/keys/x86_64/alpine-devel@lists.alpinelinux.org-6165ee59.rsa.pub"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "alpine-release@3.23.6-r0",
+          "Name": "alpine-release",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/alpine-release@3.23.6-r0?arch=x86_64\u0026distro=3.23.6",
+            "UID": "91524cfdd8621878"
+          },
+          "Version": "3.23.6-r0",
+          "Arch": "x86_64",
+          "SrcName": "alpine-base",
+          "SrcVersion": "3.23.6-r0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "alpine-keys@2.6-r0"
+          ],
+          "Layer": {
+            "Digest": "sha256:d0c1d894c237d8192cbcd37e435031ad4eddec173299568a5a05869c2e40dfa3",
+            "DiffID": "sha256:e63b02c2b5c761df2cb95e657d744f27d95da4e051235a13c80b88cd68eab188"
+          },
+          "Digest": "sha1:9a222ee46b43276b7e607f66dab5faf915d13984",
+          "InstalledFiles": [
+            "etc/alpine-release",
+            "etc/issue",
+            "etc/os-release",
+            "etc/secfixes.d/alpine",
+            "usr/lib/os-release"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "apk-tools@3.0.8-r0",
+          "Name": "apk-tools",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/apk-tools@3.0.8-r0?arch=x86_64\u0026distro=3.23.6",
+            "UID": "437cfb31b68155db"
+          },
+          "Version": "3.0.8-r0",
+          "Arch": "x86_64",
+          "SrcName": "apk-tools",
+          "SrcVersion": "3.0.8-r0",
+          "Licenses": [
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "ca-certificates-bundle@20260909-r0",
+            "libapk@3.0.8-r0",
+            "libcrypto3@3.5.8-r0",
+            "musl@1.2.5-r23",
+            "zlib@1.3.2-r0"
+          ],
+          "Layer": {
+            "Digest": "sha256:d0c1d894c237d8192cbcd37e435031ad4eddec173299568a5a05869c2e40dfa3",
+            "DiffID": "sha256:e63b02c2b5c761df2cb95e657d744f27d95da4e051235a13c80b88cd68eab188"
+          },
+          "Digest": "sha1:fa7a8422abbbb5e179033cee5455124007817b22",
+          "InstalledFiles": [
+            "sbin/apk"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "busybox@1.37.0-r30",
+          "Name": "busybox",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/busybox@1.37.0-r30?arch=x86_64\u0026distro=3.23.6",
+            "UID": "9647681d0b54db77"
+          },
+          "Version": "1.37.0-r30",
+          "Arch": "x86_64",
+          "SrcName": "busybox",
+          "SrcVersion": "1.37.0-r30",
+          "Licenses": [
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Sören Tempel \u003csoeren+alpine@soeren-tempel.net\u003e",
+          "DependsOn": [
+            "musl@1.2.5-r23"
+          ],
+          "Layer": {
+            "Digest": "sha256:d0c1d894c237d8192cbcd37e435031ad4eddec173299568a5a05869c2e40dfa3",
+            "DiffID": "sha256:e63b02c2b5c761df2cb95e657d744f27d95da4e051235a13c80b88cd68eab188"
+          },
+          "Digest": "sha1:f1347801bb96b1aa40d17f82237c3f4ff02a4725",
+          "InstalledFiles": [
+            "bin/busybox",
+            "etc/securetty",
+            "etc/busybox-paths.d/busybox",
+            "etc/logrotate.d/acpid",
+            "etc/network/if-up.d/dad",
+            "etc/udhcpc/udhcpc.conf",
+            "usr/share/udhcpc/default.script"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "busybox-binsh@1.37.0-r30",
+          "Name": "busybox-binsh",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/busybox-binsh@1.37.0-r30?arch=x86_64\u0026distro=3.23.6",
+            "UID": "3e18d05d46a6f46f"
+          },
+          "Version": "1.37.0-r30",
+          "Arch": "x86_64",
+          "SrcName": "busybox",
+          "SrcVersion": "1.37.0-r30",
+          "Licenses": [
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Sören Tempel \u003csoeren+alpine@soeren-tempel.net\u003e",
+          "DependsOn": [
+            "busybox@1.37.0-r30"
+          ],
+          "Layer": {
+            "Digest": "sha256:d0c1d894c237d8192cbcd37e435031ad4eddec173299568a5a05869c2e40dfa3",
+            "DiffID": "sha256:e63b02c2b5c761df2cb95e657d744f27d95da4e051235a13c80b88cd68eab188"
+          },
+          "Digest": "sha1:188d2d0110afa58e8a3e3e5fd424b2d996df7a09",
+          "InstalledFiles": [
+            "bin/sh"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "ca-certificates-bundle@20260909-r0",
+          "Name": "ca-certificates-bundle",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/ca-certificates-bundle@20260909-r0?arch=x86_64\u0026distro=3.23.6",
+            "UID": "56ee61c571f493d"
+          },
+          "Version": "20260909-r0",
+          "Arch": "x86_64",
+          "SrcName": "ca-certificates",
+          "SrcVersion": "20260909-r0",
+          "Licenses": [
+            "MPL-2.0",
+            "MIT"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "Layer": {
+            "Digest": "sha256:d0c1d894c237d8192cbcd37e435031ad4eddec173299568a5a05869c2e40dfa3",
+            "DiffID": "sha256:e63b02c2b5c761df2cb95e657d744f27d95da4e051235a13c80b88cd68eab188"
+          },
+          "Digest": "sha1:0b7f24b8a713bf4bb869de377505a5040239a7bc",
+          "InstalledFiles": [
+            "etc/ssl/cert.pem",
+            "etc/ssl/certs/ca-certificates.crt",
+            "etc/ssl1.1/cert.pem",
+            "etc/ssl1.1/certs"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "libapk@3.0.8-r0",
+          "Name": "libapk",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/libapk@3.0.8-r0?arch=x86_64\u0026distro=3.23.6",
+            "UID": "fb5e89a1747d84c2"
+          },
+          "Version": "3.0.8-r0",
+          "Arch": "x86_64",
+          "SrcName": "apk-tools",
+          "SrcVersion": "3.0.8-r0",
+          "Licenses": [
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "libcrypto3@3.5.8-r0",
+            "libssl3@3.5.8-r0",
+            "musl@1.2.5-r23",
+            "zlib@1.3.2-r0"
+          ],
+          "Layer": {
+            "Digest": "sha256:d0c1d894c237d8192cbcd37e435031ad4eddec173299568a5a05869c2e40dfa3",
+            "DiffID": "sha256:e63b02c2b5c761df2cb95e657d744f27d95da4e051235a13c80b88cd68eab188"
+          },
+          "Digest": "sha1:2913286d1d02641d392289ba525850be6856df11",
+          "InstalledFiles": [
+            "usr/lib/libapk.so.3.0.0"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "libcrypto3@3.5.8-r0",
+          "Name": "libcrypto3",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/libcrypto3@3.5.8-r0?arch=x86_64\u0026distro=3.23.6",
+            "UID": "6f720d761ae51746"
+          },
+          "Version": "3.5.8-r0",
+          "Arch": "x86_64",
+          "SrcName": "openssl",
+          "SrcVersion": "3.5.8-r0",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "musl@1.2.5-r23"
+          ],
+          "Layer": {
+            "Digest": "sha256:d0c1d894c237d8192cbcd37e435031ad4eddec173299568a5a05869c2e40dfa3",
+            "DiffID": "sha256:e63b02c2b5c761df2cb95e657d744f27d95da4e051235a13c80b88cd68eab188"
+          },
+          "Digest": "sha1:c5d20a5036bd12c5130652879054be658429c1d5",
+          "InstalledFiles": [
+            "etc/ssl/ct_log_list.cnf",
+            "etc/ssl/ct_log_list.cnf.dist",
+            "etc/ssl/openssl.cnf",
+            "etc/ssl/openssl.cnf.dist",
+            "usr/lib/libcrypto.so.3",
+            "usr/lib/engines-3/afalg.so",
+            "usr/lib/engines-3/capi.so",
+            "usr/lib/engines-3/loader_attic.so",
+            "usr/lib/engines-3/padlock.so",
+            "usr/lib/ossl-modules/legacy.so"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "libgcc@15.2.0-r2",
+          "Name": "libgcc",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/libgcc@15.2.0-r2?arch=x86_64\u0026distro=3.23.6",
+            "UID": "89fff20701e56ab7"
+          },
+          "Version": "15.2.0-r2",
+          "Arch": "x86_64",
+          "SrcName": "gcc",
+          "SrcVersion": "15.2.0-r2",
+          "Licenses": [
+            "GPL-2.0-or-later",
+            "LGPL-2.1-or-later"
+          ],
+          "Maintainer": "Ariadne Conill \u003cariadne@dereferenced.org\u003e",
+          "DependsOn": [
+            "musl@1.2.5-r23"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "Digest": "sha1:57fccbe9eebf23f2c4f38ee2a24f8b0bdd508ff7",
+          "InstalledFiles": [
+            "usr/lib/libgcc_s.so.1"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "libssl3@3.5.8-r0",
+          "Name": "libssl3",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/libssl3@3.5.8-r0?arch=x86_64\u0026distro=3.23.6",
+            "UID": "1aafb9a42f29e87a"
+          },
+          "Version": "3.5.8-r0",
+          "Arch": "x86_64",
+          "SrcName": "openssl",
+          "SrcVersion": "3.5.8-r0",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "libcrypto3@3.5.8-r0",
+            "musl@1.2.5-r23"
+          ],
+          "Layer": {
+            "Digest": "sha256:d0c1d894c237d8192cbcd37e435031ad4eddec173299568a5a05869c2e40dfa3",
+            "DiffID": "sha256:e63b02c2b5c761df2cb95e657d744f27d95da4e051235a13c80b88cd68eab188"
+          },
+          "Digest": "sha1:07184887491e0feffa57184419b1387450047bb9",
+          "InstalledFiles": [
+            "usr/lib/libssl.so.3"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "libstdc++@15.2.0-r2",
+          "Name": "libstdc++",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/libstdc%2B%2B@15.2.0-r2?arch=x86_64\u0026distro=3.23.6",
+            "UID": "3ff8ae215a6a54a6"
+          },
+          "Version": "15.2.0-r2",
+          "Arch": "x86_64",
+          "SrcName": "gcc",
+          "SrcVersion": "15.2.0-r2",
+          "Licenses": [
+            "GPL-2.0-or-later",
+            "LGPL-2.1-or-later"
+          ],
+          "Maintainer": "Ariadne Conill \u003cariadne@dereferenced.org\u003e",
+          "DependsOn": [
+            "libgcc@15.2.0-r2",
+            "musl@1.2.5-r23"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "Digest": "sha1:528d77417a16706468af852f2859ad00f176e266",
+          "InstalledFiles": [
+            "usr/lib/libstdc++.so.6",
+            "usr/lib/libstdc++.so.6.0.34"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "musl@1.2.5-r23",
+          "Name": "musl",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/musl@1.2.5-r23?arch=x86_64\u0026distro=3.23.6",
+            "UID": "dca30b3fd6708a32"
+          },
+          "Version": "1.2.5-r23",
+          "Arch": "x86_64",
+          "SrcName": "musl",
+          "SrcVersion": "1.2.5-r23",
+          "Licenses": [
+            "MIT"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "Layer": {
+            "Digest": "sha256:d0c1d894c237d8192cbcd37e435031ad4eddec173299568a5a05869c2e40dfa3",
+            "DiffID": "sha256:e63b02c2b5c761df2cb95e657d744f27d95da4e051235a13c80b88cd68eab188"
+          },
+          "Digest": "sha1:1b6c50426d3c0656e9c5a567a5a59601c7f4307a",
+          "InstalledFiles": [
+            "lib/ld-musl-x86_64.so.1",
+            "lib/libc.musl-x86_64.so.1"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "musl-utils@1.2.5-r23",
+          "Name": "musl-utils",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/musl-utils@1.2.5-r23?arch=x86_64\u0026distro=3.23.6",
+            "UID": "ffcf7198a9776c5f"
+          },
+          "Version": "1.2.5-r23",
+          "Arch": "x86_64",
+          "SrcName": "musl",
+          "SrcVersion": "1.2.5-r23",
+          "Licenses": [
+            "MIT",
+            "BSD-2-Clause",
+            "GPL-2.0-or-later"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "musl@1.2.5-r23",
+            "scanelf@1.3.8-r2"
+          ],
+          "Layer": {
+            "Digest": "sha256:d0c1d894c237d8192cbcd37e435031ad4eddec173299568a5a05869c2e40dfa3",
+            "DiffID": "sha256:e63b02c2b5c761df2cb95e657d744f27d95da4e051235a13c80b88cd68eab188"
+          },
+          "Digest": "sha1:92fdbe96d25f13fe3a3d297ada56e4fb907aacec",
+          "InstalledFiles": [
+            "sbin/ldconfig",
+            "usr/bin/getconf",
+            "usr/bin/getent",
+            "usr/bin/iconv",
+            "usr/bin/ldd"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "scanelf@1.3.8-r2",
+          "Name": "scanelf",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/scanelf@1.3.8-r2?arch=x86_64\u0026distro=3.23.6",
+            "UID": "4efd612ed6f16dca"
+          },
+          "Version": "1.3.8-r2",
+          "Arch": "x86_64",
+          "SrcName": "pax-utils",
+          "SrcVersion": "1.3.8-r2",
+          "Licenses": [
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "musl@1.2.5-r23"
+          ],
+          "Layer": {
+            "Digest": "sha256:d0c1d894c237d8192cbcd37e435031ad4eddec173299568a5a05869c2e40dfa3",
+            "DiffID": "sha256:e63b02c2b5c761df2cb95e657d744f27d95da4e051235a13c80b88cd68eab188"
+          },
+          "Digest": "sha1:6ea36dd44ef9f6364f0cdfabe09ea15d2fdbe229",
+          "InstalledFiles": [
+            "usr/bin/scanelf"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "ssl_client@1.37.0-r30",
+          "Name": "ssl_client",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/ssl_client@1.37.0-r30?arch=x86_64\u0026distro=3.23.6",
+            "UID": "92299c558ff421b3"
+          },
+          "Version": "1.37.0-r30",
+          "Arch": "x86_64",
+          "SrcName": "busybox",
+          "SrcVersion": "1.37.0-r30",
+          "Licenses": [
+            "GPL-2.0-only"
+          ],
+          "Maintainer": "Sören Tempel \u003csoeren+alpine@soeren-tempel.net\u003e",
+          "DependsOn": [
+            "libcrypto3@3.5.8-r0",
+            "libssl3@3.5.8-r0",
+            "musl@1.2.5-r23"
+          ],
+          "Layer": {
+            "Digest": "sha256:d0c1d894c237d8192cbcd37e435031ad4eddec173299568a5a05869c2e40dfa3",
+            "DiffID": "sha256:e63b02c2b5c761df2cb95e657d744f27d95da4e051235a13c80b88cd68eab188"
+          },
+          "Digest": "sha1:5b6ec0939cfc9be47d9677a3152c547cc18b5edd",
+          "InstalledFiles": [
+            "usr/bin/ssl_client"
+          ],
+          "AnalyzedBy": "apk"
+        },
+        {
+          "ID": "zlib@1.3.2-r0",
+          "Name": "zlib",
+          "Identifier": {
+            "PURL": "pkg:apk/alpine/zlib@1.3.2-r0?arch=x86_64\u0026distro=3.23.6",
+            "UID": "23a5a7d167a86311"
+          },
+          "Version": "1.3.2-r0",
+          "Arch": "x86_64",
+          "SrcName": "zlib",
+          "SrcVersion": "1.3.2-r0",
+          "Licenses": [
+            "Zlib"
+          ],
+          "Maintainer": "Natanael Copa \u003cncopa@alpinelinux.org\u003e",
+          "DependsOn": [
+            "musl@1.2.5-r23"
+          ],
+          "Layer": {
+            "Digest": "sha256:d0c1d894c237d8192cbcd37e435031ad4eddec173299568a5a05869c2e40dfa3",
+            "DiffID": "sha256:e63b02c2b5c761df2cb95e657d744f27d95da4e051235a13c80b88cd68eab188"
+          },
+          "Digest": "sha1:68bb97ea5255e77aa974e65476d64832ad56288a",
+          "InstalledFiles": [
+            "usr/lib/libz.so.1",
+            "usr/lib/libz.so.1.3.2"
+          ],
+          "AnalyzedBy": "apk"
+        }
+      ]
+    },
+    {
+      "Target": "Node.js",
+      "Class": "lang-pkgs",
+      "Type": "node-pkg",
+      "Packages": [
+        {
+          "ID": "@gar/promise-retry@1.0.3",
+          "Name": "@gar/promise-retry",
+          "Identifier": {
+            "PURL": "pkg:npm/%40gar/promise-retry@1.0.3",
+            "UID": "8e0b76d34126019b"
+          },
+          "Version": "1.0.3",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/@gar/promise-retry/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "@isaacs/fs-minipass@4.0.1",
+          "Name": "@isaacs/fs-minipass",
+          "Identifier": {
+            "PURL": "pkg:npm/%40isaacs/fs-minipass@4.0.1",
+            "UID": "a243149143caa5d3"
+          },
+          "Version": "4.0.1",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/@isaacs/fs-minipass/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "@isaacs/string-locale-compare@1.1.0",
+          "Name": "@isaacs/string-locale-compare",
+          "Identifier": {
+            "PURL": "pkg:npm/%40isaacs/string-locale-compare@1.1.0",
+            "UID": "4b7c47e3454f8345"
+          },
+          "Version": "1.1.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/@isaacs/string-locale-compare/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "@npmcli/agent@4.0.2",
+          "Name": "@npmcli/agent",
+          "Identifier": {
+            "PURL": "pkg:npm/%40npmcli/agent@4.0.2",
+            "UID": "3fa7699fb2a76a9a"
+          },
+          "Version": "4.0.2",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/@npmcli/agent/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "@npmcli/arborist@9.9.1",
+          "Name": "@npmcli/arborist",
+          "Identifier": {
+            "PURL": "pkg:npm/%40npmcli/arborist@9.9.1",
+            "UID": "85504a0269f62d8d"
+          },
+          "Version": "9.9.1",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "@npmcli/config@10.12.0",
+          "Name": "@npmcli/config",
+          "Identifier": {
+            "PURL": "pkg:npm/%40npmcli/config@10.12.0",
+            "UID": "cffcf31a2130c4e3"
+          },
+          "Version": "10.12.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/@npmcli/config/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "@npmcli/fs@5.0.0",
+          "Name": "@npmcli/fs",
+          "Identifier": {
+            "PURL": "pkg:npm/%40npmcli/fs@5.0.0",
+            "UID": "c8117500576f6ced"
+          },
+          "Version": "5.0.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/@npmcli/fs/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "@npmcli/git@7.0.2",
+          "Name": "@npmcli/git",
+          "Identifier": {
+            "PURL": "pkg:npm/%40npmcli/git@7.0.2",
+            "UID": "1dbf0a5690695b0"
+          },
+          "Version": "7.0.2",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/@npmcli/git/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "@npmcli/installed-package-contents@4.0.0",
+          "Name": "@npmcli/installed-package-contents",
+          "Identifier": {
+            "PURL": "pkg:npm/%40npmcli/installed-package-contents@4.0.0",
+            "UID": "f8b7211aeeb626eb"
+          },
+          "Version": "4.0.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/@npmcli/installed-package-contents/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "@npmcli/map-workspaces@5.0.3",
+          "Name": "@npmcli/map-workspaces",
+          "Identifier": {
+            "PURL": "pkg:npm/%40npmcli/map-workspaces@5.0.3",
+            "UID": "16ac0fb6ae1a33f4"
+          },
+          "Version": "5.0.3",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/@npmcli/map-workspaces/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "@npmcli/metavuln-calculator@9.0.3",
+          "Name": "@npmcli/metavuln-calculator",
+          "Identifier": {
+            "PURL": "pkg:npm/%40npmcli/metavuln-calculator@9.0.3",
+            "UID": "3a23b7833b0b5f20"
+          },
+          "Version": "9.0.3",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/@npmcli/metavuln-calculator/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "@npmcli/name-from-folder@4.0.0",
+          "Name": "@npmcli/name-from-folder",
+          "Identifier": {
+            "PURL": "pkg:npm/%40npmcli/name-from-folder@4.0.0",
+            "UID": "d27c720e3ae2edc6"
+          },
+          "Version": "4.0.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/@npmcli/name-from-folder/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "@npmcli/node-gyp@5.0.0",
+          "Name": "@npmcli/node-gyp",
+          "Identifier": {
+            "PURL": "pkg:npm/%40npmcli/node-gyp@5.0.0",
+            "UID": "698db9fa08ba9b90"
+          },
+          "Version": "5.0.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/@npmcli/node-gyp/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "@npmcli/package-json@7.0.5",
+          "Name": "@npmcli/package-json",
+          "Identifier": {
+            "PURL": "pkg:npm/%40npmcli/package-json@7.0.5",
+            "UID": "4c5a1c7780f4f4cc"
+          },
+          "Version": "7.0.5",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/@npmcli/package-json/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "@npmcli/promise-spawn@9.0.1",
+          "Name": "@npmcli/promise-spawn",
+          "Identifier": {
+            "PURL": "pkg:npm/%40npmcli/promise-spawn@9.0.1",
+            "UID": "a88c373a1e8ab1ac"
+          },
+          "Version": "9.0.1",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/@npmcli/promise-spawn/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "@npmcli/query@5.0.0",
+          "Name": "@npmcli/query",
+          "Identifier": {
+            "PURL": "pkg:npm/%40npmcli/query@5.0.0",
+            "UID": "f3a974e2dfc105ee"
+          },
+          "Version": "5.0.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/@npmcli/query/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "@npmcli/redact@4.0.0",
+          "Name": "@npmcli/redact",
+          "Identifier": {
+            "PURL": "pkg:npm/%40npmcli/redact@4.0.0",
+            "UID": "c0e751bc9297c412"
+          },
+          "Version": "4.0.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/@npmcli/redact/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "@npmcli/run-script@10.0.4",
+          "Name": "@npmcli/run-script",
+          "Identifier": {
+            "PURL": "pkg:npm/%40npmcli/run-script@10.0.4",
+            "UID": "a36824b9bd7c7f1c"
+          },
+          "Version": "10.0.4",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/@npmcli/run-script/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "@sigstore/bundle@4.0.0",
+          "Name": "@sigstore/bundle",
+          "Identifier": {
+            "PURL": "pkg:npm/%40sigstore/bundle@4.0.0",
+            "UID": "4768290514d54a7e"
+          },
+          "Version": "4.0.0",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/@sigstore/bundle/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "@sigstore/core@3.2.1",
+          "Name": "@sigstore/core",
+          "Identifier": {
+            "PURL": "pkg:npm/%40sigstore/core@3.2.1",
+            "UID": "2459cff4fcada873"
+          },
+          "Version": "3.2.1",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/@sigstore/core/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "@sigstore/protobuf-specs@0.5.1",
+          "Name": "@sigstore/protobuf-specs",
+          "Identifier": {
+            "PURL": "pkg:npm/%40sigstore/protobuf-specs@0.5.1",
+            "UID": "718c51160885db1d"
+          },
+          "Version": "0.5.1",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/@sigstore/protobuf-specs/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "@sigstore/sign@4.1.1",
+          "Name": "@sigstore/sign",
+          "Identifier": {
+            "PURL": "pkg:npm/%40sigstore/sign@4.1.1",
+            "UID": "8cde9abb0aa0ae81"
+          },
+          "Version": "4.1.1",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/@sigstore/sign/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "@sigstore/tuf@4.0.2",
+          "Name": "@sigstore/tuf",
+          "Identifier": {
+            "PURL": "pkg:npm/%40sigstore/tuf@4.0.2",
+            "UID": "ffa89c0092633c39"
+          },
+          "Version": "4.0.2",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/@sigstore/tuf/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "@sigstore/verify@3.1.1",
+          "Name": "@sigstore/verify",
+          "Identifier": {
+            "PURL": "pkg:npm/%40sigstore/verify@3.1.1",
+            "UID": "905d81304c08e5c8"
+          },
+          "Version": "3.1.1",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/@sigstore/verify/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "@tufjs/canonical-json@2.0.0",
+          "Name": "@tufjs/canonical-json",
+          "Identifier": {
+            "PURL": "pkg:npm/%40tufjs/canonical-json@2.0.0",
+            "UID": "c9bd83d46147e58a"
+          },
+          "Version": "2.0.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/@tufjs/canonical-json/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "@tufjs/models@4.1.0",
+          "Name": "@tufjs/models",
+          "Identifier": {
+            "PURL": "pkg:npm/%40tufjs/models@4.1.0",
+            "UID": "98a1e2a0a0d02abb"
+          },
+          "Version": "4.1.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/@tufjs/models/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "abbrev@4.0.0",
+          "Name": "abbrev",
+          "Identifier": {
+            "PURL": "pkg:npm/abbrev@4.0.0",
+            "UID": "8d8e13cc8f0eb11f"
+          },
+          "Version": "4.0.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/abbrev/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "agent-base@7.1.4",
+          "Name": "agent-base",
+          "Identifier": {
+            "PURL": "pkg:npm/agent-base@7.1.4",
+            "UID": "a29114964ca5cb1"
+          },
+          "Version": "7.1.4",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/agent-base/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "aproba@2.1.0",
+          "Name": "aproba",
+          "Identifier": {
+            "PURL": "pkg:npm/aproba@2.1.0",
+            "UID": "65b5d298c3c834d"
+          },
+          "Version": "2.1.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/aproba/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "archy@1.0.0",
+          "Name": "archy",
+          "Identifier": {
+            "PURL": "pkg:npm/archy@1.0.0",
+            "UID": "c6f97df2c6bd73cd"
+          },
+          "Version": "1.0.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/archy/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "balanced-match@4.0.4",
+          "Name": "balanced-match",
+          "Identifier": {
+            "PURL": "pkg:npm/balanced-match@4.0.4",
+            "UID": "130610ebd0a80b54"
+          },
+          "Version": "4.0.4",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/balanced-match/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "bin-links@6.0.2",
+          "Name": "bin-links",
+          "Identifier": {
+            "PURL": "pkg:npm/bin-links@6.0.2",
+            "UID": "b514fce0680ac539"
+          },
+          "Version": "6.0.2",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/bin-links/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "binary-extensions@3.1.0",
+          "Name": "binary-extensions",
+          "Identifier": {
+            "PURL": "pkg:npm/binary-extensions@3.1.0",
+            "UID": "ea5ef4874c55097a"
+          },
+          "Version": "3.1.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/binary-extensions/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "brace-expansion@5.0.9",
+          "Name": "brace-expansion",
+          "Identifier": {
+            "PURL": "pkg:npm/brace-expansion@5.0.9",
+            "UID": "868042afe866f0f9"
+          },
+          "Version": "5.0.9",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/brace-expansion/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "cacache@20.0.4",
+          "Name": "cacache",
+          "Identifier": {
+            "PURL": "pkg:npm/cacache@20.0.4",
+            "UID": "d2b15bdfb2c81564"
+          },
+          "Version": "20.0.4",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/cacache/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "chalk@5.6.2",
+          "Name": "chalk",
+          "Identifier": {
+            "PURL": "pkg:npm/chalk@5.6.2",
+            "UID": "1f19bd2e420a59a6"
+          },
+          "Version": "5.6.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/chalk/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "chownr@3.0.0",
+          "Name": "chownr",
+          "Identifier": {
+            "PURL": "pkg:npm/chownr@3.0.0",
+            "UID": "c2446e59cf4aad08"
+          },
+          "Version": "3.0.0",
+          "Licenses": [
+            "BlueOak-1.0.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/chownr/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "ci-info@4.4.0",
+          "Name": "ci-info",
+          "Identifier": {
+            "PURL": "pkg:npm/ci-info@4.4.0",
+            "UID": "ec9c48df6b096b3a"
+          },
+          "Version": "4.4.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/ci-info/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "cidr-regex@5.0.5",
+          "Name": "cidr-regex",
+          "Identifier": {
+            "PURL": "pkg:npm/cidr-regex@5.0.5",
+            "UID": "d9b626fe74a2c8a1"
+          },
+          "Version": "5.0.5",
+          "Licenses": [
+            "BSD-2-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/cidr-regex/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "cmd-shim@8.0.0",
+          "Name": "cmd-shim",
+          "Identifier": {
+            "PURL": "pkg:npm/cmd-shim@8.0.0",
+            "UID": "dc4dbb1907ad1cac"
+          },
+          "Version": "8.0.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/cmd-shim/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "common-ancestor-path@2.0.0",
+          "Name": "common-ancestor-path",
+          "Identifier": {
+            "PURL": "pkg:npm/common-ancestor-path@2.0.0",
+            "UID": "5b6474ba7f3d4e57"
+          },
+          "Version": "2.0.0",
+          "Licenses": [
+            "BlueOak-1.0.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/common-ancestor-path/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "cssesc@3.0.0",
+          "Name": "cssesc",
+          "Identifier": {
+            "PURL": "pkg:npm/cssesc@3.0.0",
+            "UID": "7f5523593daaa2d6"
+          },
+          "Version": "3.0.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/cssesc/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "debug@4.4.3",
+          "Name": "debug",
+          "Identifier": {
+            "PURL": "pkg:npm/debug@4.4.3",
+            "UID": "cbfc08d5e097ff06"
+          },
+          "Version": "4.4.3",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/debug/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "diff@8.0.4",
+          "Name": "diff",
+          "Identifier": {
+            "PURL": "pkg:npm/diff@8.0.4",
+            "UID": "65ff059d673f8358"
+          },
+          "Version": "8.0.4",
+          "Licenses": [
+            "BSD-3-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/diff/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "env-paths@2.2.1",
+          "Name": "env-paths",
+          "Identifier": {
+            "PURL": "pkg:npm/env-paths@2.2.1",
+            "UID": "4d5f9228dca262ad"
+          },
+          "Version": "2.2.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/env-paths/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "exponential-backoff@3.1.3",
+          "Name": "exponential-backoff",
+          "Identifier": {
+            "PURL": "pkg:npm/exponential-backoff@3.1.3",
+            "UID": "1b8f0088b2ee45c2"
+          },
+          "Version": "3.1.3",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/exponential-backoff/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "fastest-levenshtein@1.0.16",
+          "Name": "fastest-levenshtein",
+          "Identifier": {
+            "PURL": "pkg:npm/fastest-levenshtein@1.0.16",
+            "UID": "c2930316b43e3802"
+          },
+          "Version": "1.0.16",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/fastest-levenshtein/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "fdir@6.5.0",
+          "Name": "fdir",
+          "Identifier": {
+            "PURL": "pkg:npm/fdir@6.5.0",
+            "UID": "803b6232542f97ca"
+          },
+          "Version": "6.5.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/tinyglobby/node_modules/fdir/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "fs-minipass@3.0.3",
+          "Name": "fs-minipass",
+          "Identifier": {
+            "PURL": "pkg:npm/fs-minipass@3.0.3",
+            "UID": "fcead9aef62eff18"
+          },
+          "Version": "3.0.3",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/fs-minipass/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "glob@13.0.6",
+          "Name": "glob",
+          "Identifier": {
+            "PURL": "pkg:npm/glob@13.0.6",
+            "UID": "172563f1159147e8"
+          },
+          "Version": "13.0.6",
+          "Licenses": [
+            "BlueOak-1.0.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/glob/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "graceful-fs@4.2.11",
+          "Name": "graceful-fs",
+          "Identifier": {
+            "PURL": "pkg:npm/graceful-fs@4.2.11",
+            "UID": "48999ee23c560636"
+          },
+          "Version": "4.2.11",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/graceful-fs/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "hosted-git-info@9.0.3",
+          "Name": "hosted-git-info",
+          "Identifier": {
+            "PURL": "pkg:npm/hosted-git-info@9.0.3",
+            "UID": "955c795a2266a14"
+          },
+          "Version": "9.0.3",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/hosted-git-info/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "http-cache-semantics@4.2.0",
+          "Name": "http-cache-semantics",
+          "Identifier": {
+            "PURL": "pkg:npm/http-cache-semantics@4.2.0",
+            "UID": "f7b0a7c67def6ec7"
+          },
+          "Version": "4.2.0",
+          "Licenses": [
+            "BSD-2-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/http-cache-semantics/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "http-proxy-agent@7.0.2",
+          "Name": "http-proxy-agent",
+          "Identifier": {
+            "PURL": "pkg:npm/http-proxy-agent@7.0.2",
+            "UID": "b03040e191aa89aa"
+          },
+          "Version": "7.0.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/http-proxy-agent/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "https-proxy-agent@7.0.6",
+          "Name": "https-proxy-agent",
+          "Identifier": {
+            "PURL": "pkg:npm/https-proxy-agent@7.0.6",
+            "UID": "e351f3713548ce82"
+          },
+          "Version": "7.0.6",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/https-proxy-agent/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "iconv-lite@0.7.2",
+          "Name": "iconv-lite",
+          "Identifier": {
+            "PURL": "pkg:npm/iconv-lite@0.7.2",
+            "UID": "fd5861248059c4c6"
+          },
+          "Version": "0.7.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/iconv-lite/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "ignore-walk@8.0.0",
+          "Name": "ignore-walk",
+          "Identifier": {
+            "PURL": "pkg:npm/ignore-walk@8.0.0",
+            "UID": "a266cd064d64a8f9"
+          },
+          "Version": "8.0.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/ignore-walk/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "ini@6.0.0",
+          "Name": "ini",
+          "Identifier": {
+            "PURL": "pkg:npm/ini@6.0.0",
+            "UID": "f005920fa3606b13"
+          },
+          "Version": "6.0.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/ini/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "init-package-json@8.2.5",
+          "Name": "init-package-json",
+          "Identifier": {
+            "PURL": "pkg:npm/init-package-json@8.2.5",
+            "UID": "3f8b377ec7565070"
+          },
+          "Version": "8.2.5",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/init-package-json/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "ip-address@10.5.0",
+          "Name": "ip-address",
+          "Identifier": {
+            "PURL": "pkg:npm/ip-address@10.5.0",
+            "UID": "c0bf6846f3271c23"
+          },
+          "Version": "10.5.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/ip-address/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "is-cidr@6.0.4",
+          "Name": "is-cidr",
+          "Identifier": {
+            "PURL": "pkg:npm/is-cidr@6.0.4",
+            "UID": "4d71ad1f3f6a859a"
+          },
+          "Version": "6.0.4",
+          "Licenses": [
+            "BSD-2-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/is-cidr/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "isexe@4.0.0",
+          "Name": "isexe",
+          "Identifier": {
+            "PURL": "pkg:npm/isexe@4.0.0",
+            "UID": "bf53a631dc9c831"
+          },
+          "Version": "4.0.0",
+          "Licenses": [
+            "BlueOak-1.0.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/isexe/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "json-parse-even-better-errors@5.0.0",
+          "Name": "json-parse-even-better-errors",
+          "Identifier": {
+            "PURL": "pkg:npm/json-parse-even-better-errors@5.0.0",
+            "UID": "caf28ac402e028fa"
+          },
+          "Version": "5.0.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/json-parse-even-better-errors/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "json-stringify-nice@1.1.4",
+          "Name": "json-stringify-nice",
+          "Identifier": {
+            "PURL": "pkg:npm/json-stringify-nice@1.1.4",
+            "UID": "c5c27ed2359935d9"
+          },
+          "Version": "1.1.4",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/json-stringify-nice/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "jsonparse@1.3.1",
+          "Name": "jsonparse",
+          "Identifier": {
+            "PURL": "pkg:npm/jsonparse@1.3.1",
+            "UID": "6d24ba846346e57e"
+          },
+          "Version": "1.3.1",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/jsonparse/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "just-diff@6.0.2",
+          "Name": "just-diff",
+          "Identifier": {
+            "PURL": "pkg:npm/just-diff@6.0.2",
+            "UID": "c6c2fd84314937b7"
+          },
+          "Version": "6.0.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/just-diff/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "just-diff-apply@5.5.0",
+          "Name": "just-diff-apply",
+          "Identifier": {
+            "PURL": "pkg:npm/just-diff-apply@5.5.0",
+            "UID": "f52effebae09b036"
+          },
+          "Version": "5.5.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/just-diff-apply/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "libnpmaccess@10.0.3",
+          "Name": "libnpmaccess",
+          "Identifier": {
+            "PURL": "pkg:npm/libnpmaccess@10.0.3",
+            "UID": "56a696973189118e"
+          },
+          "Version": "10.0.3",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/libnpmaccess/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "libnpmdiff@8.1.12",
+          "Name": "libnpmdiff",
+          "Identifier": {
+            "PURL": "pkg:npm/libnpmdiff@8.1.12",
+            "UID": "ac1ef02da491284a"
+          },
+          "Version": "8.1.12",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/libnpmdiff/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "libnpmexec@10.3.2",
+          "Name": "libnpmexec",
+          "Identifier": {
+            "PURL": "pkg:npm/libnpmexec@10.3.2",
+            "UID": "79ad1abe8fe2bc7c"
+          },
+          "Version": "10.3.2",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/libnpmexec/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "libnpmfund@7.0.26",
+          "Name": "libnpmfund",
+          "Identifier": {
+            "PURL": "pkg:npm/libnpmfund@7.0.26",
+            "UID": "92fa7b7c1730d98a"
+          },
+          "Version": "7.0.26",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/libnpmfund/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "libnpmorg@8.0.1",
+          "Name": "libnpmorg",
+          "Identifier": {
+            "PURL": "pkg:npm/libnpmorg@8.0.1",
+            "UID": "3a1e54c9b0191383"
+          },
+          "Version": "8.0.1",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/libnpmorg/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "libnpmpack@9.1.13",
+          "Name": "libnpmpack",
+          "Identifier": {
+            "PURL": "pkg:npm/libnpmpack@9.1.13",
+            "UID": "96e2cc51d2d8e957"
+          },
+          "Version": "9.1.13",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/libnpmpack/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "libnpmpublish@11.2.0",
+          "Name": "libnpmpublish",
+          "Identifier": {
+            "PURL": "pkg:npm/libnpmpublish@11.2.0",
+            "UID": "53ea952e92b7fe56"
+          },
+          "Version": "11.2.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/libnpmpublish/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "libnpmsearch@9.0.1",
+          "Name": "libnpmsearch",
+          "Identifier": {
+            "PURL": "pkg:npm/libnpmsearch@9.0.1",
+            "UID": "9e31ad9b20de8711"
+          },
+          "Version": "9.0.1",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/libnpmsearch/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "libnpmteam@8.0.2",
+          "Name": "libnpmteam",
+          "Identifier": {
+            "PURL": "pkg:npm/libnpmteam@8.0.2",
+            "UID": "71eccb7f85b7085c"
+          },
+          "Version": "8.0.2",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/libnpmteam/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "libnpmversion@8.0.4",
+          "Name": "libnpmversion",
+          "Identifier": {
+            "PURL": "pkg:npm/libnpmversion@8.0.4",
+            "UID": "dd4ad49426954b86"
+          },
+          "Version": "8.0.4",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/libnpmversion/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "lru-cache@11.5.1",
+          "Name": "lru-cache",
+          "Identifier": {
+            "PURL": "pkg:npm/lru-cache@11.5.1",
+            "UID": "9d6613a6bf625136"
+          },
+          "Version": "11.5.1",
+          "Licenses": [
+            "BlueOak-1.0.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/lru-cache/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "make-fetch-happen@15.0.6",
+          "Name": "make-fetch-happen",
+          "Identifier": {
+            "PURL": "pkg:npm/make-fetch-happen@15.0.6",
+            "UID": "df3f4cc3ab8ef469"
+          },
+          "Version": "15.0.6",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/make-fetch-happen/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "minimatch@10.2.5",
+          "Name": "minimatch",
+          "Identifier": {
+            "PURL": "pkg:npm/minimatch@10.2.5",
+            "UID": "864a32484f674d54"
+          },
+          "Version": "10.2.5",
+          "Licenses": [
+            "BlueOak-1.0.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/minimatch/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "minipass@3.3.6",
+          "Name": "minipass",
+          "Identifier": {
+            "PURL": "pkg:npm/minipass@3.3.6",
+            "UID": "b7ce61ea2292da41"
+          },
+          "Version": "3.3.6",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/minipass-pipeline/node_modules/minipass/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "minipass@7.1.3",
+          "Name": "minipass",
+          "Identifier": {
+            "PURL": "pkg:npm/minipass@7.1.3",
+            "UID": "4051bad8dec024d1"
+          },
+          "Version": "7.1.3",
+          "Licenses": [
+            "BlueOak-1.0.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/minipass/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "minipass-collect@2.0.1",
+          "Name": "minipass-collect",
+          "Identifier": {
+            "PURL": "pkg:npm/minipass-collect@2.0.1",
+            "UID": "c5f716d9c0ec4b92"
+          },
+          "Version": "2.0.1",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/minipass-collect/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "minipass-fetch@5.0.2",
+          "Name": "minipass-fetch",
+          "Identifier": {
+            "PURL": "pkg:npm/minipass-fetch@5.0.2",
+            "UID": "127b714d1e52aa15"
+          },
+          "Version": "5.0.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/minipass-fetch/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "minipass-flush@1.0.6",
+          "Name": "minipass-flush",
+          "Identifier": {
+            "PURL": "pkg:npm/minipass-flush@1.0.6",
+            "UID": "8916edb862d539fd"
+          },
+          "Version": "1.0.6",
+          "Licenses": [
+            "BlueOak-1.0.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/minipass-flush/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "minipass-pipeline@1.2.4",
+          "Name": "minipass-pipeline",
+          "Identifier": {
+            "PURL": "pkg:npm/minipass-pipeline@1.2.4",
+            "UID": "f9ca1e5f3449b3dc"
+          },
+          "Version": "1.2.4",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/minipass-pipeline/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "minipass-sized@2.0.0",
+          "Name": "minipass-sized",
+          "Identifier": {
+            "PURL": "pkg:npm/minipass-sized@2.0.0",
+            "UID": "148942e5c7dd1a67"
+          },
+          "Version": "2.0.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/minipass-sized/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "minizlib@3.1.0",
+          "Name": "minizlib",
+          "Identifier": {
+            "PURL": "pkg:npm/minizlib@3.1.0",
+            "UID": "c55f100e28b906b"
+          },
+          "Version": "3.1.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/minizlib/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "ms@2.1.3",
+          "Name": "ms",
+          "Identifier": {
+            "PURL": "pkg:npm/ms@2.1.3",
+            "UID": "50a140c9d554dc56"
+          },
+          "Version": "2.1.3",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/ms/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "mute-stream@3.0.0",
+          "Name": "mute-stream",
+          "Identifier": {
+            "PURL": "pkg:npm/mute-stream@3.0.0",
+            "UID": "b845f193cc4b6309"
+          },
+          "Version": "3.0.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/mute-stream/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "negotiator@1.0.0",
+          "Name": "negotiator",
+          "Identifier": {
+            "PURL": "pkg:npm/negotiator@1.0.0",
+            "UID": "28c19cc3e361ce6c"
+          },
+          "Version": "1.0.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/negotiator/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "node-gyp@12.4.0",
+          "Name": "node-gyp",
+          "Identifier": {
+            "PURL": "pkg:npm/node-gyp@12.4.0",
+            "UID": "4e4eac31ca0d87bc"
+          },
+          "Version": "12.4.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/node-gyp/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "nopt@9.0.0",
+          "Name": "nopt",
+          "Identifier": {
+            "PURL": "pkg:npm/nopt@9.0.0",
+            "UID": "a0dcc3fd49da4deb"
+          },
+          "Version": "9.0.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/nopt/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "npm@11.19.1",
+          "Name": "npm",
+          "Identifier": {
+            "PURL": "pkg:npm/npm@11.19.1",
+            "UID": "9e1e1f18cba1f0d1"
+          },
+          "Version": "11.19.1",
+          "Licenses": [
+            "Artistic-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "npm-audit-report@7.0.0",
+          "Name": "npm-audit-report",
+          "Identifier": {
+            "PURL": "pkg:npm/npm-audit-report@7.0.0",
+            "UID": "a904c3123854995b"
+          },
+          "Version": "7.0.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/npm-audit-report/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "npm-bundled@5.0.0",
+          "Name": "npm-bundled",
+          "Identifier": {
+            "PURL": "pkg:npm/npm-bundled@5.0.0",
+            "UID": "dd3b54d7737b6bb4"
+          },
+          "Version": "5.0.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/npm-bundled/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "npm-install-checks@8.0.0",
+          "Name": "npm-install-checks",
+          "Identifier": {
+            "PURL": "pkg:npm/npm-install-checks@8.0.0",
+            "UID": "341ab23c4124b244"
+          },
+          "Version": "8.0.0",
+          "Licenses": [
+            "BSD-2-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/npm-install-checks/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "npm-normalize-package-bin@5.0.0",
+          "Name": "npm-normalize-package-bin",
+          "Identifier": {
+            "PURL": "pkg:npm/npm-normalize-package-bin@5.0.0",
+            "UID": "a32c3aa151337c66"
+          },
+          "Version": "5.0.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/npm-normalize-package-bin/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "npm-package-arg@13.0.2",
+          "Name": "npm-package-arg",
+          "Identifier": {
+            "PURL": "pkg:npm/npm-package-arg@13.0.2",
+            "UID": "68d9460fcb7c259b"
+          },
+          "Version": "13.0.2",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/npm-package-arg/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "npm-packlist@10.0.4",
+          "Name": "npm-packlist",
+          "Identifier": {
+            "PURL": "pkg:npm/npm-packlist@10.0.4",
+            "UID": "e39e77db95896865"
+          },
+          "Version": "10.0.4",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/npm-packlist/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "npm-pick-manifest@11.0.3",
+          "Name": "npm-pick-manifest",
+          "Identifier": {
+            "PURL": "pkg:npm/npm-pick-manifest@11.0.3",
+            "UID": "363c2920d8231c7b"
+          },
+          "Version": "11.0.3",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/npm-pick-manifest/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "npm-profile@12.0.2",
+          "Name": "npm-profile",
+          "Identifier": {
+            "PURL": "pkg:npm/npm-profile@12.0.2",
+            "UID": "82e0c376c0a7e957"
+          },
+          "Version": "12.0.2",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/npm-profile/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "npm-registry-fetch@19.1.1",
+          "Name": "npm-registry-fetch",
+          "Identifier": {
+            "PURL": "pkg:npm/npm-registry-fetch@19.1.1",
+            "UID": "acba36c78be68712"
+          },
+          "Version": "19.1.1",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/npm-registry-fetch/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "npm-user-validate@4.0.0",
+          "Name": "npm-user-validate",
+          "Identifier": {
+            "PURL": "pkg:npm/npm-user-validate@4.0.0",
+            "UID": "1d42085a5251bbea"
+          },
+          "Version": "4.0.0",
+          "Licenses": [
+            "BSD-2-Clause"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/npm-user-validate/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "p-map@7.0.4",
+          "Name": "p-map",
+          "Identifier": {
+            "PURL": "pkg:npm/p-map@7.0.4",
+            "UID": "7de5ffb924393231"
+          },
+          "Version": "7.0.4",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/p-map/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "pacote@21.5.1",
+          "Name": "pacote",
+          "Identifier": {
+            "PURL": "pkg:npm/pacote@21.5.1",
+            "UID": "c47695f72b3e695d"
+          },
+          "Version": "21.5.1",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/pacote/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "parse-conflict-json@5.0.1",
+          "Name": "parse-conflict-json",
+          "Identifier": {
+            "PURL": "pkg:npm/parse-conflict-json@5.0.1",
+            "UID": "b7220d28f68b757a"
+          },
+          "Version": "5.0.1",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/parse-conflict-json/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "path-scurry@2.0.2",
+          "Name": "path-scurry",
+          "Identifier": {
+            "PURL": "pkg:npm/path-scurry@2.0.2",
+            "UID": "ed6a2a1491a16f6e"
+          },
+          "Version": "2.0.2",
+          "Licenses": [
+            "BlueOak-1.0.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/path-scurry/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "picomatch@4.0.4",
+          "Name": "picomatch",
+          "Identifier": {
+            "PURL": "pkg:npm/picomatch@4.0.4",
+            "UID": "33c5334805cbffab"
+          },
+          "Version": "4.0.4",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/tinyglobby/node_modules/picomatch/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "postcss-selector-parser@7.1.4",
+          "Name": "postcss-selector-parser",
+          "Identifier": {
+            "PURL": "pkg:npm/postcss-selector-parser@7.1.4",
+            "UID": "2630291d022c3549"
+          },
+          "Version": "7.1.4",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/postcss-selector-parser/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "proc-log@6.1.0",
+          "Name": "proc-log",
+          "Identifier": {
+            "PURL": "pkg:npm/proc-log@6.1.0",
+            "UID": "a426910986567598"
+          },
+          "Version": "6.1.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/proc-log/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "proggy@4.0.0",
+          "Name": "proggy",
+          "Identifier": {
+            "PURL": "pkg:npm/proggy@4.0.0",
+            "UID": "b9c829fb91367db8"
+          },
+          "Version": "4.0.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/proggy/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "promise-all-reject-late@1.0.1",
+          "Name": "promise-all-reject-late",
+          "Identifier": {
+            "PURL": "pkg:npm/promise-all-reject-late@1.0.1",
+            "UID": "759c5c0dfe22841e"
+          },
+          "Version": "1.0.1",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/promise-all-reject-late/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "promise-call-limit@3.0.2",
+          "Name": "promise-call-limit",
+          "Identifier": {
+            "PURL": "pkg:npm/promise-call-limit@3.0.2",
+            "UID": "d3e52c24867edbc5"
+          },
+          "Version": "3.0.2",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/promise-call-limit/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "promzard@3.0.1",
+          "Name": "promzard",
+          "Identifier": {
+            "PURL": "pkg:npm/promzard@3.0.1",
+            "UID": "5df1e06ffd94fafc"
+          },
+          "Version": "3.0.1",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/promzard/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "qrcode-terminal@0.12.0",
+          "Name": "qrcode-terminal",
+          "Identifier": {
+            "PURL": "pkg:npm/qrcode-terminal@0.12.0",
+            "UID": "b17a7c2ec3321961"
+          },
+          "Version": "0.12.0",
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/qrcode-terminal/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "read@5.0.1",
+          "Name": "read",
+          "Identifier": {
+            "PURL": "pkg:npm/read@5.0.1",
+            "UID": "a1c68d2ab17afe68"
+          },
+          "Version": "5.0.1",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/read/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "read-cmd-shim@6.0.0",
+          "Name": "read-cmd-shim",
+          "Identifier": {
+            "PURL": "pkg:npm/read-cmd-shim@6.0.0",
+            "UID": "59d39b9ba7aec7ef"
+          },
+          "Version": "6.0.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/read-cmd-shim/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "safer-buffer@2.1.2",
+          "Name": "safer-buffer",
+          "Identifier": {
+            "PURL": "pkg:npm/safer-buffer@2.1.2",
+            "UID": "c91f6999c7debfda"
+          },
+          "Version": "2.1.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/safer-buffer/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "semver@7.8.5",
+          "Name": "semver",
+          "Identifier": {
+            "PURL": "pkg:npm/semver@7.8.5",
+            "UID": "4c91a0ec6a9d4a03"
+          },
+          "Version": "7.8.5",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/semver/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "signal-exit@4.1.0",
+          "Name": "signal-exit",
+          "Identifier": {
+            "PURL": "pkg:npm/signal-exit@4.1.0",
+            "UID": "883b84195e986f6a"
+          },
+          "Version": "4.1.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/signal-exit/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "sigstore@4.1.1",
+          "Name": "sigstore",
+          "Identifier": {
+            "PURL": "pkg:npm/sigstore@4.1.1",
+            "UID": "8d17e691c88ae318"
+          },
+          "Version": "4.1.1",
+          "Licenses": [
+            "Apache-2.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/sigstore/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "smart-buffer@4.2.0",
+          "Name": "smart-buffer",
+          "Identifier": {
+            "PURL": "pkg:npm/smart-buffer@4.2.0",
+            "UID": "f0c5ee9f68d6fddf"
+          },
+          "Version": "4.2.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/smart-buffer/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "socks@2.8.9",
+          "Name": "socks",
+          "Identifier": {
+            "PURL": "pkg:npm/socks@2.8.9",
+            "UID": "824623918d130be7"
+          },
+          "Version": "2.8.9",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/socks/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "socks-proxy-agent@8.0.5",
+          "Name": "socks-proxy-agent",
+          "Identifier": {
+            "PURL": "pkg:npm/socks-proxy-agent@8.0.5",
+            "UID": "e2e974b7f8f572c4"
+          },
+          "Version": "8.0.5",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/socks-proxy-agent/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "spdx-exceptions@2.5.0",
+          "Name": "spdx-exceptions",
+          "Identifier": {
+            "PURL": "pkg:npm/spdx-exceptions@2.5.0",
+            "UID": "3602fef2070203cf"
+          },
+          "Version": "2.5.0",
+          "Licenses": [
+            "CC-BY-3.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/spdx-exceptions/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "spdx-expression-parse@4.0.0",
+          "Name": "spdx-expression-parse",
+          "Identifier": {
+            "PURL": "pkg:npm/spdx-expression-parse@4.0.0",
+            "UID": "951d3251ced005b"
+          },
+          "Version": "4.0.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/spdx-expression-parse/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "spdx-license-ids@3.0.23",
+          "Name": "spdx-license-ids",
+          "Identifier": {
+            "PURL": "pkg:npm/spdx-license-ids@3.0.23",
+            "UID": "565aca18fc1c1d30"
+          },
+          "Version": "3.0.23",
+          "Licenses": [
+            "CC0-1.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/spdx-license-ids/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "ssri@13.0.1",
+          "Name": "ssri",
+          "Identifier": {
+            "PURL": "pkg:npm/ssri@13.0.1",
+            "UID": "97f9e00e517d319"
+          },
+          "Version": "13.0.1",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/ssri/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "supports-color@10.2.2",
+          "Name": "supports-color",
+          "Identifier": {
+            "PURL": "pkg:npm/supports-color@10.2.2",
+            "UID": "fb4aab93961faeee"
+          },
+          "Version": "10.2.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/supports-color/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "tar@7.5.22",
+          "Name": "tar",
+          "Identifier": {
+            "PURL": "pkg:npm/tar@7.5.22",
+            "UID": "6f7608956607843"
+          },
+          "Version": "7.5.22",
+          "Licenses": [
+            "BlueOak-1.0.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/tar/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "text-table@0.2.0",
+          "Name": "text-table",
+          "Identifier": {
+            "PURL": "pkg:npm/text-table@0.2.0",
+            "UID": "db9d37c2491d4eb4"
+          },
+          "Version": "0.2.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/text-table/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "tiny-relative-date@2.0.2",
+          "Name": "tiny-relative-date",
+          "Identifier": {
+            "PURL": "pkg:npm/tiny-relative-date@2.0.2",
+            "UID": "22fdc115cb62172a"
+          },
+          "Version": "2.0.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/tiny-relative-date/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "tinyglobby@0.2.17",
+          "Name": "tinyglobby",
+          "Identifier": {
+            "PURL": "pkg:npm/tinyglobby@0.2.17",
+            "UID": "36ba4fbf566d3386"
+          },
+          "Version": "0.2.17",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/tinyglobby/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "treeverse@3.0.0",
+          "Name": "treeverse",
+          "Identifier": {
+            "PURL": "pkg:npm/treeverse@3.0.0",
+            "UID": "815f9702b2f3013d"
+          },
+          "Version": "3.0.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/treeverse/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "tuf-js@4.1.0",
+          "Name": "tuf-js",
+          "Identifier": {
+            "PURL": "pkg:npm/tuf-js@4.1.0",
+            "UID": "18ebde3c72f3838e"
+          },
+          "Version": "4.1.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/tuf-js/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "undici@6.28.0",
+          "Name": "undici",
+          "Identifier": {
+            "PURL": "pkg:npm/undici@6.28.0",
+            "UID": "ce334dba36b60cab"
+          },
+          "Version": "6.28.0",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/undici/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "util-deprecate@1.0.2",
+          "Name": "util-deprecate",
+          "Identifier": {
+            "PURL": "pkg:npm/util-deprecate@1.0.2",
+            "UID": "f9c0b05c435e4f77"
+          },
+          "Version": "1.0.2",
+          "Licenses": [
+            "MIT"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/util-deprecate/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "validate-npm-package-name@7.0.2",
+          "Name": "validate-npm-package-name",
+          "Identifier": {
+            "PURL": "pkg:npm/validate-npm-package-name@7.0.2",
+            "UID": "d41f44524c8124aa"
+          },
+          "Version": "7.0.2",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/validate-npm-package-name/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "walk-up-path@4.0.0",
+          "Name": "walk-up-path",
+          "Identifier": {
+            "PURL": "pkg:npm/walk-up-path@4.0.0",
+            "UID": "f8908523d3316267"
+          },
+          "Version": "4.0.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/walk-up-path/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "which@6.0.1",
+          "Name": "which",
+          "Identifier": {
+            "PURL": "pkg:npm/which@6.0.1",
+            "UID": "5058743222eeb3a3"
+          },
+          "Version": "6.0.1",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/which/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "write-file-atomic@7.0.1",
+          "Name": "write-file-atomic",
+          "Identifier": {
+            "PURL": "pkg:npm/write-file-atomic@7.0.1",
+            "UID": "6ff83d76dff09459"
+          },
+          "Version": "7.0.1",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/write-file-atomic/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "yallist@4.0.0",
+          "Name": "yallist",
+          "Identifier": {
+            "PURL": "pkg:npm/yallist@4.0.0",
+            "UID": "f844828a67933457"
+          },
+          "Version": "4.0.0",
+          "Licenses": [
+            "ISC"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/minipass-pipeline/node_modules/yallist/package.json",
+          "AnalyzedBy": "node-pkg"
+        },
+        {
+          "ID": "yallist@5.0.0",
+          "Name": "yallist",
+          "Identifier": {
+            "PURL": "pkg:npm/yallist@5.0.0",
+            "UID": "54aace8c0fad3070"
+          },
+          "Version": "5.0.0",
+          "Licenses": [
+            "BlueOak-1.0.0"
+          ],
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "FilePath": "usr/local/lib/node_modules/npm/node_modules/yallist/package.json",
+          "AnalyzedBy": "node-pkg"
+        }
+      ],
+      "Vulnerabilities": [
+        {
+          "VulnerabilityID": "CVE-2026-102276",
+          "VendorIDs": [
+            "GHSA-6j4f-fj2g-mc7p"
+          ],
+          "PkgID": "brace-expansion@5.0.9",
+          "PkgName": "brace-expansion",
+          "PkgPath": "usr/local/lib/node_modules/npm/node_modules/brace-expansion/package.json",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/brace-expansion@5.0.9",
+            "UID": "868042afe866f0f9"
+          },
+          "InstalledVersion": "5.0.9",
+          "FixedVersion": "5.0.10, 3.0.7, 2.1.5, 1.1.19",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-102276",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:941348c016c221680993db3517933d81906b1736d6a8b18178367df2e92d6f01",
+          "Title": "brace-expansion: brace-expansion: Denial of Service via stack exhaustion from crafted brace patterns",
+          "Description": "The brace-expansion library generates arbitrary strings containing a common prefix and suffix. Prior to 1.1.19, 2.1.5, 3.0.7, and 5.0.10, crafted brace patterns can exhaust the native stack in parseCommaParts because parseCommaParts recursively processes the remainder once per brace group and uses push.apply to pass every element of a very large comma-part array as a function argument. Patterns containing many comma-separated brace groups trigger the recursive path, while the large array triggers the argument-array path without deep recursion. These paths cause recursive and argument-array native stack exhaustion before max or maxLength can limit output, potentially terminating the Node.js process in a process-terminating denial of service. This issue is fixed in versions 1.1.19, 2.1.5, 3.0.7, and 5.0.10.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-400",
+            "CWE-674"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-102276",
+            "https://github.com/juliangruber/brace-expansion",
+            "https://github.com/juliangruber/brace-expansion/commit/0bcbfc0a5928c3073d48f42999d1ce4fc1c42fbc",
+            "https://github.com/juliangruber/brace-expansion/commit/316359e6019c39b3254c8ba8e25dc586a480652c",
+            "https://github.com/juliangruber/brace-expansion/commit/5171e681c0922b7ae8bfaf9a331e309107be6edc",
+            "https://github.com/juliangruber/brace-expansion/commit/6735c94873ca570bcdd6a0690033bdd3126379d3",
+            "https://github.com/juliangruber/brace-expansion/security/advisories/GHSA-6j4f-fj2g-mc7p",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-102276",
+            "https://www.cve.org/CVERecord?id=CVE-2026-102276"
+          ],
+          "PublishedDate": "2026-09-28T21:17:16.033Z",
+          "LastModifiedDate": "2026-09-30T19:57:08.043Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-102278",
+          "VendorIDs": [
+            "GHSA-qhr7-859c-m2p7"
+          ],
+          "PkgID": "brace-expansion@5.0.9",
+          "PkgName": "brace-expansion",
+          "PkgPath": "usr/local/lib/node_modules/npm/node_modules/brace-expansion/package.json",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/brace-expansion@5.0.9",
+            "UID": "868042afe866f0f9"
+          },
+          "InstalledVersion": "5.0.9",
+          "FixedVersion": "5.0.11, 3.0.8, 2.1.6, 1.1.20",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-102278",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:9c8eb7dc8969dec377400f75ea9352a36583d496175d27f3574086e82c6a1d7f",
+          "Title": "brace-expansion: brace-expansion: Denial of Service via uncontrolled recursion in nested brace patterns",
+          "Description": "The brace-expansion library generates arbitrary strings containing a common prefix and suffix. Prior to 1.1.20, 2.1.6, 3.0.8, and 5.0.11, deeply nested brace groups cause expand_() to recurse once per nesting level at comma-member and single-set expansion sites, exhausting the native stack before output limits can apply and potentially terminating the Node.js process. expand_ performs uncontrolled recursion for nested brace alternatives and single-part sets. deeply nested brace groups supplied as an untrusted pattern. expand_ is affected. expand is affected. Comma members is affected. Single set is affected. native stack exhaustion during nested sub-expansion. process-terminating denial of service. This issue is fixed in versions 1.1.20, 2.1.6, 3.0.8, and 5.0.11.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-400",
+            "CWE-674"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-102278",
+            "https://github.com/juliangruber/brace-expansion",
+            "https://github.com/juliangruber/brace-expansion/commit/1efee7c397c191da6287a78ec19512476a966a7b",
+            "https://github.com/juliangruber/brace-expansion/commit/935d78f32f335b2ff76578e5c5e877d31ae9888c",
+            "https://github.com/juliangruber/brace-expansion/commit/de84f144e9816f30e25fc8179e2e1249ab6df0db",
+            "https://github.com/juliangruber/brace-expansion/security/advisories/GHSA-qhr7-859c-m2p7",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-102278",
+            "https://www.cve.org/CVERecord?id=CVE-2026-102278"
+          ],
+          "PublishedDate": "2026-09-28T21:17:16.517Z",
+          "LastModifiedDate": "2026-10-01T15:17:25.593Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-102277",
+          "VendorIDs": [
+            "GHSA-q2hr-2g5m-vwhr"
+          ],
+          "PkgID": "brace-expansion@5.0.9",
+          "PkgName": "brace-expansion",
+          "PkgPath": "usr/local/lib/node_modules/npm/node_modules/brace-expansion/package.json",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/brace-expansion@5.0.9",
+            "UID": "868042afe866f0f9"
+          },
+          "InstalledVersion": "5.0.9",
+          "FixedVersion": "5.0.12, 3.0.9, 2.1.7, 1.1.21",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-102277",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:f4f6594622589fed25a9c461096ad5d6bdc0baa0d337414f02a1516df0a73cbf",
+          "Title": "brace-expansion: brace-expansion: Denial of Service via crafted brace patterns",
+          "Description": "The brace-expansion library generates arbitrary strings containing a common prefix and suffix. Prior to 1.1.21, 2.1.7, 3.0.9, and 5.0.12, the expand function handles untrusted {a},b}-shaped patterns with many trailing closing braces by restarting its scan once for each trailing closing brace. The successive full-input rescans with linear working-string growth cause quadratic CPU time and memory pressure that can block the Node.js event loop. The process eventually recovers, making the impact a recoverable CPU denial of service. This issue is fixed in versions 1.1.21, 2.1.7, 3.0.9, and 5.0.12.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-400",
+            "CWE-407"
+          ],
+          "VendorSeverity": {
+            "ghsa": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+              "V3Score": 5.3
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-102277",
+            "https://github.com/juliangruber/brace-expansion",
+            "https://github.com/juliangruber/brace-expansion/commit/33a5ef17b8d800bbfa8c52b14c39043b6aac1a96",
+            "https://github.com/juliangruber/brace-expansion/commit/bdff773f98e5988616b7039cc9b508df5d640b22",
+            "https://github.com/juliangruber/brace-expansion/commit/c55e67d8d8b1c56a2474afff15c2891166b2d364",
+            "https://github.com/juliangruber/brace-expansion/commit/ffdfa3e3806bed17c0874b8f1439b084de354a7e",
+            "https://github.com/juliangruber/brace-expansion/security/advisories/GHSA-q2hr-2g5m-vwhr",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-102277",
+            "https://www.cve.org/CVERecord?id=CVE-2026-102277"
+          ],
+          "PublishedDate": "2026-09-28T21:17:16.3Z",
+          "LastModifiedDate": "2026-09-30T19:57:08.043Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-93748",
+          "VendorIDs": [
+            "GHSA-ch52-4w7c-c8xp"
+          ],
+          "PkgID": "http-cache-semantics@4.2.0",
+          "PkgName": "http-cache-semantics",
+          "PkgPath": "usr/local/lib/node_modules/npm/node_modules/http-cache-semantics/package.json",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/http-cache-semantics@4.2.0",
+            "UID": "f7b0a7c67def6ec7"
+          },
+          "InstalledVersion": "4.2.0",
+          "Status": "affected",
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-93748",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:cc83ddeb69519b7ecd3463f55232a4c7249446953cece3637fdcc124abb267c3",
+          "Title": "http-cache-semantics: http-cache-semantics: Information Disclosure via max-stale directive",
+          "Description": "http-cache-semantics through 4.2.0 fails to properly validate security-zeroed cache entries when processing client max-stale directives, allowing unauthenticated attackers to retrieve cached responses belonging to other users. Attackers can request the same URL with a large max-stale value to obtain another user's Set-Cookie session credentials from shared-cache entries that were deliberately zeroed for security reasons.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-524"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V40Vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N",
+              "V3Score": 7.5,
+              "V40Score": 8.7
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-93748",
+            "https://github.com/kornelski/http-cache-semantics",
+            "https://github.com/kornelski/http-cache-semantics/blob/f01112e954b83cfa8765b633ba880e5e980aa54c/index.js#L425-L441",
+            "https://github.com/kornelski/http-cache-semantics/blob/f01112e954b83cfa8765b633ba880e5e980aa54c/index.js#L603-L623",
+            "https://github.com/kornelski/http-cache-semantics/issues/56",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-93748",
+            "https://www.cve.org/CVERecord?id=CVE-2026-93748",
+            "https://www.vulncheck.com/advisories/http-cache-semantics-through-4.2.0-cross-user-cache-disclosure-via-max-stale"
+          ],
+          "PublishedDate": "2026-09-18T18:18:33.33Z",
+          "LastModifiedDate": "2026-09-23T17:17:49.593Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-101910",
+          "VendorIDs": [
+            "GHSA-2vr4-cq9g-pvrc"
+          ],
+          "PkgID": "ip-address@10.5.0",
+          "PkgName": "ip-address",
+          "PkgPath": "usr/local/lib/node_modules/npm/node_modules/ip-address/package.json",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/ip-address@10.5.0",
+            "UID": "c0bf6846f3271c23"
+          },
+          "InstalledVersion": "10.5.0",
+          "FixedVersion": "10.5.1",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-101910",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:23eac56419430e71c5eb587f56dc2a8b2c98582a5ffce130cce36bf04e0ef3b2",
+          "Title": "ip-address: ip-address: Security boundary bypass via unclassified NAT64 local-use address range",
+          "Description": "ip-address is a library for parsing and manipulating IPv4 and IPv6 addresses in JavaScript. From 10.2.0 until 10.5.1, the Address6 isPrivate classifier in src/ipv6.ts does not recognize the NAT64 local-use range 64:ff9b:1::/48. Applications that combine isPrivate, isLoopback, and isLinkLocal for a trust-boundary decision can treat an internal IPv4 destination encoded through that range as external. Exploitation depends on a server network using an operator-selected NAT64 prefix within the local-use range. A successful bypass can cross the intended network trust boundary. This issue is fixed in version 10.5.1.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-918"
+          ],
+          "VendorSeverity": {
+            "ghsa": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V40Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:H/SI:N/SA:N",
+              "V40Score": 6.9
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-101910",
+            "https://github.com/beaugunderson/ip-address",
+            "https://github.com/beaugunderson/ip-address/commit/ab3dc88bcf5374344168a2ba075ca7ac4ff257f8",
+            "https://github.com/beaugunderson/ip-address/releases/tag/v10.5.1",
+            "https://github.com/beaugunderson/ip-address/security/advisories/GHSA-2vr4-cq9g-pvrc",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-101910",
+            "https://www.cve.org/CVERecord?id=CVE-2026-101910"
+          ],
+          "PublishedDate": "2026-09-28T18:17:20.71Z",
+          "LastModifiedDate": "2026-09-30T19:57:08.043Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-101911",
+          "VendorIDs": [
+            "GHSA-h3mg-xc3c-68pw"
+          ],
+          "PkgID": "ip-address@10.5.0",
+          "PkgName": "ip-address",
+          "PkgPath": "usr/local/lib/node_modules/npm/node_modules/ip-address/package.json",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/ip-address@10.5.0",
+            "UID": "c0bf6846f3271c23"
+          },
+          "InstalledVersion": "10.5.0",
+          "FixedVersion": "10.7.1",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-101911",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:f3cb38ccc9221399d4134c58e01a72149692e4a1f7ad0259d78e4128ef38e455",
+          "Title": "ip-address: ip-address: Denial of Service via unbounded IPv6 address parsing",
+          "Description": "ip-address is a library for parsing and manipulating IPv4 and IPv6 addresses in JavaScript. Prior to 10.7.1, the Address6 constructor, Address6.isValid, and parse code in src/ipv6.ts accept unbounded strings and expand invalid characters through RE_BAD_CHARACTERS into large diagnostics. Material impact occurs only when an application accepts a very large attacker-controlled field and passes it to Address6 parsing without an earlier length bound. Common URL and header limits, and common body-parser defaults, generally constrain the effect; common defaults typically exclude 32 MiB fields. Megabyte-scale fields can cause a synchronous stall and high transient memory use, approximately 16 MiB can trigger an invalid string length exception, and process termination occurs at approximately 32 MiB. The affected entry points include Address6.isValid and construction paths that reach parse. This issue is fixed in version 10.7.1.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-400",
+            "CWE-770"
+          ],
+          "VendorSeverity": {
+            "ghsa": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V40Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N",
+              "V40Score": 6.3
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-101911",
+            "https://github.com/beaugunderson/ip-address",
+            "https://github.com/beaugunderson/ip-address/commit/469ead1231b4cc059f2150c626e1e0c2895c0134",
+            "https://github.com/beaugunderson/ip-address/commit/8b34a21e0839b37c094066816fb2c2c48a2adcf5",
+            "https://github.com/beaugunderson/ip-address/releases/tag/v10.7.1",
+            "https://github.com/beaugunderson/ip-address/security/advisories/GHSA-h3mg-xc3c-68pw",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-101911",
+            "https://www.cve.org/CVERecord?id=CVE-2026-101911"
+          ],
+          "PublishedDate": "2026-09-28T18:17:20.907Z",
+          "LastModifiedDate": "2026-10-01T15:17:24.813Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-101912",
+          "VendorIDs": [
+            "GHSA-j6r3-76f7-8jcv"
+          ],
+          "PkgID": "ip-address@10.5.0",
+          "PkgName": "ip-address",
+          "PkgPath": "usr/local/lib/node_modules/npm/node_modules/ip-address/package.json",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/ip-address@10.5.0",
+            "UID": "c0bf6846f3271c23"
+          },
+          "InstalledVersion": "10.5.0",
+          "FixedVersion": "10.7.1",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-101912",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:eb1f727293fcea35ea88b60468d9db1df301a231082fc3325cbfa65773608061",
+          "Title": "ip-address: ip-address: Access control bypass via cross-family subnet comparison",
+          "Description": "ip-address is a library for parsing and manipulating IPv4 and IPv6 addresses in JavaScript. Prior to 10.7.1, the isInSubnet and isHostInSubnet methods in src/common.ts compare masked binary strings without validating that both operands use the same IP family. A cross-family containment check whose leading address bits match makes the masked strings compare equal even though IPv4 and IPv6 do not share an address space. An allowlist or denylist decision can therefore classify an address outside the intended range as contained. This issue is fixed in version 10.7.1.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-697",
+            "CWE-843"
+          ],
+          "VendorSeverity": {
+            "ghsa": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V40Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N",
+              "V40Score": 6.3
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-101912",
+            "https://github.com/beaugunderson/ip-address",
+            "https://github.com/beaugunderson/ip-address/commit/1343629d57fea413644a5c9d41ff1e59619f3f28",
+            "https://github.com/beaugunderson/ip-address/releases/tag/v10.7.1",
+            "https://github.com/beaugunderson/ip-address/security/advisories/GHSA-j6r3-76f7-8jcv",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-101912",
+            "https://www.cve.org/CVERecord?id=CVE-2026-101912"
+          ],
+          "PublishedDate": "2026-09-28T18:17:21.073Z",
+          "LastModifiedDate": "2026-09-30T19:57:08.043Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-101913",
+          "VendorIDs": [
+            "GHSA-rpw4-54j3-4h4q"
+          ],
+          "PkgID": "ip-address@10.5.0",
+          "PkgName": "ip-address",
+          "PkgPath": "usr/local/lib/node_modules/npm/node_modules/ip-address/package.json",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/ip-address@10.5.0",
+            "UID": "c0bf6846f3271c23"
+          },
+          "InstalledVersion": "10.5.0",
+          "FixedVersion": "10.5.1",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-101913",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:5624d388571a646dbe46e79863f99c8bce8c40efce5e01deafd8c0b739c4f117",
+          "Title": "ip-address: ip-address: Security bypass via incomplete IPv6 link-local address validation",
+          "Description": "ip-address is a library for parsing and manipulating IPv4 and IPv6 addresses in JavaScript. Prior to 10.5.1, the Address6 isLinkLocal method in src/ipv6.ts recognizes only fe80::/64 instead of the complete fe80::/10 IPv6 link-local range. An attacker-controlled address elsewhere in fe80::/10 can therefore pass a trust-boundary check that relies on isLinkLocal. The same address is identified as link-local by getType and getScope, exposing the inconsistent classification. A successful bypass can reach an on-link host outside the intended trust boundary. This issue is fixed in version 10.5.1.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-697",
+            "CWE-918"
+          ],
+          "VendorSeverity": {
+            "ghsa": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V40Vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:L/VI:N/VA:N/SC:L/SI:N/SA:N",
+              "V40Score": 6.3
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+              "V3Score": 5.3
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-101913",
+            "https://github.com/beaugunderson/ip-address",
+            "https://github.com/beaugunderson/ip-address/commit/d03e960c7cc3179ef25c8a44b4f94dd499625546",
+            "https://github.com/beaugunderson/ip-address/releases/tag/v10.5.1",
+            "https://github.com/beaugunderson/ip-address/security/advisories/GHSA-rpw4-54j3-4h4q",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-101913",
+            "https://www.cve.org/CVERecord?id=CVE-2026-101913"
+          ],
+          "PublishedDate": "2026-09-28T18:17:21.237Z",
+          "LastModifiedDate": "2026-09-30T19:57:08.043Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-19534",
+          "VendorIDs": [
+            "GHSA-rfgv-xxqx-mfg5"
+          ],
+          "PkgID": "undici@6.28.0",
+          "PkgName": "undici",
+          "PkgPath": "usr/local/lib/node_modules/npm/node_modules/undici/package.json",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/undici@6.28.0",
+            "UID": "ce334dba36b60cab"
+          },
+          "InstalledVersion": "6.28.0",
+          "FixedVersion": "6.28.1, 7.29.1, 8.10.2",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-19534",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:0a5755bafc3e1b4d8faac13bac2deaf6593a8590d057a5caa5b136b236652873",
+          "Title": "undici: undici: Denial of Service via unrequested WebSocket subprotocol",
+          "Description": "undici's WebSocket client crashes the whole Node.js process during the opening handshake when a server responds with a subprotocol that the client never requested. A default WebSocket connection sends no subprotocol, but if the server's 101 response includes a Sec-WebSocket-Protocol header, undici dereferences a null value while checking it against the requested list and throws an uncaught TypeError. Because that code runs inside a microtask with no surrounding error handling, the exception propagates and terminates the process under Node's default behavior, instead of gracefully failing the connection as required by the WebSocket protocol. Any application that opens a WebSocket to an attacker-controlled or compromised server, or over a plaintext connection subject to a machine-in-the-middle, can be crashed remotely without authentication in the default configuration. This affects undici versions from 6.7.0 up to 6.28.1, from 7.0.0 up to 7.29.1, and from 8.0.0 up to 8.10.2. Users should upgrade to undici 6.28.1, 7.29.1, or 8.10.2.",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-248",
+            "CWE-252"
+          ],
+          "VendorSeverity": {
+            "alma": 3,
+            "amazon": 3,
+            "ghsa": 3,
+            "oracle-oval": 3,
+            "redhat": 3,
+            "rocky": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 7.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/errata/RHSA-2026:73428",
+            "https://access.redhat.com/errata/RHSA-2026:73838",
+            "https://access.redhat.com/security/cve/CVE-2026-19534",
+            "https://bugzilla.redhat.com/2528735",
+            "https://bugzilla.redhat.com/2528759",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2528717",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2528735",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2528759",
+            "https://cna.openjsf.org/security-advisories.html",
+            "https://creativecommons.org/licenses/by/4.0/",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-19534",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-84961",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-85152",
+            "https://errata.almalinux.org/10/ALSA-2026-73428.html",
+            "https://errata.rockylinux.org/RLSA-2026:73838",
+            "https://github.com/nodejs/undici",
+            "https://github.com/nodejs/undici/commit/2af0faf88b906d3127a360c3ac75164c0f95e5a5",
+            "https://github.com/nodejs/undici/commit/6615e0175e9b635bcd2e3e87a47daa82f6f5b728",
+            "https://github.com/nodejs/undici/commit/66e12816064cf3068f63bd134748b7fc4e779bad",
+            "https://github.com/nodejs/undici/releases/tag/v6.28.1",
+            "https://github.com/nodejs/undici/releases/tag/v7.29.1",
+            "https://github.com/nodejs/undici/releases/tag/v8.10.2",
+            "https://github.com/nodejs/undici/security/advisories/GHSA-rfgv-xxqx-mfg5",
+            "https://linux.oracle.com/cve/CVE-2026-19534.html",
+            "https://linux.oracle.com/errata/ELSA-2026-73838.html",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-19534",
+            "https://www.cve.org/CVERecord?id=CVE-2026-19534"
+          ],
+          "PublishedDate": "2026-09-04T18:17:51.647Z",
+          "LastModifiedDate": "2026-09-16T20:41:08.75Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-85024",
+          "VendorIDs": [
+            "GHSA-3wwx-pv8p-q78v"
+          ],
+          "PkgID": "undici@6.28.0",
+          "PkgName": "undici",
+          "PkgPath": "usr/local/lib/node_modules/npm/node_modules/undici/package.json",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/undici@6.28.0",
+            "UID": "ce334dba36b60cab"
+          },
+          "InstalledVersion": "6.28.0",
+          "FixedVersion": "6.28.1, 7.29.1, 8.10.2",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-85024",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:a86ede8b078c2e999ab0e7fad02aae978d5197ed7c177d8f78a1c6668719901a",
+          "Title": "undici: undici: Denial of Service via unhandled error in WebSocket permessage-deflate decompression",
+          "Description": "undici bundles a WebSocket client whose permessage-deflate size-limit cleanup removes all listeners from the internal zlib inflate stream, including its error listener, while that stream can still emit. When a remote peer sends a compressed payload that crosses the built-in 128 MiB decompressed-payload limit and then contains a malformed DEFLATE byte, the inflate stream emits a data error with no listener attached, which Node.js treats as a fatal unhandled error and terminates the entire process. Exploitation is remote and unauthenticated, requires no application mistake, and is asymmetric, since roughly 130 KB on the wire expands past the limit and crashes the process, and reconnecting can repeat the crash. This affects undici versions from 6.25.0 up to 6.28.1, from 7.28.0 up to 7.29.1, and from 8.1.0 up to 8.10.2. Users should upgrade to undici 6.28.1, 7.29.1, or 8.10.2.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-248"
+          ],
+          "VendorSeverity": {
+            "amazon": 3,
+            "ghsa": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 5.9
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 5.9
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-85024",
+            "https://cna.openjsf.org/security-advisories.html",
+            "https://github.com/nodejs/undici",
+            "https://github.com/nodejs/undici/commit/07c60d9c7099a910451244afe42861bbdbdd974c",
+            "https://github.com/nodejs/undici/commit/4411a238a98e8791da5fff10cc9e3578a7668ed6",
+            "https://github.com/nodejs/undici/commit/63cf698b611fecc6ee0a17b185b930051e4b982f",
+            "https://github.com/nodejs/undici/releases/tag/v6.28.1",
+            "https://github.com/nodejs/undici/releases/tag/v7.29.1",
+            "https://github.com/nodejs/undici/releases/tag/v8.10.2",
+            "https://github.com/nodejs/undici/security/advisories/GHSA-3wwx-pv8p-q78v",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-85024",
+            "https://www.cve.org/CVERecord?id=CVE-2026-85024"
+          ],
+          "PublishedDate": "2026-09-04T17:17:02.59Z",
+          "LastModifiedDate": "2026-09-16T20:41:46.04Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-18540",
+          "VendorIDs": [
+            "GHSA-r53p-7pc4-xj5r"
+          ],
+          "PkgID": "undici@6.28.0",
+          "PkgName": "undici",
+          "PkgPath": "usr/local/lib/node_modules/npm/node_modules/undici/package.json",
+          "PkgIdentifier": {
+            "PURL": "pkg:npm/undici@6.28.0",
+            "UID": "ce334dba36b60cab"
+          },
+          "InstalledVersion": "6.28.0",
+          "FixedVersion": "6.28.1, 7.29.1, 8.10.2",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:02a12a914fbdf252847310d28a844f7021a8402ba2f670fdc2477ac5ea3647ed",
+            "DiffID": "sha256:61450f1a2cd8da010f7851a2453f441d81a1a2b1b04d2c13edf58476d7a86709"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-18540",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory npm",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+          },
+          "Fingerprint": "sha256:b705b55465687a31b00743690ceb67e8c92b9a14d5abd2c402db00d9a4d13e87",
+          "Title": "undici: undici: HTTP response splitting via retry interceptor",
+          "Description": "undici's retry interceptor can append the body of a ranged retry response to bytes already delivered from an earlier partial response while still presenting the original response's status and headers. This happens when an upstream server delivers part of a body without a trustworthy resume checkpoint, for example a non-success response whose headers were already sent or a partial-content response with an unusable content range, then closes the connection and answers the resumed range request with more bytes. As a result the response body can be longer than the Content-Length that the application observes. An application that relays such a response to a downstream HTTP/1.1 peer without normalizing the framing can emit a body that exceeds the forwarded Content-Length, and the excess bytes can be interpreted as the start of a following response, which enables downstream response splitting or desynchronization. Exploitation requires an attacker-controlled upstream server and an application that forwards the response through a framing-sensitive path. This affects undici versions before 6.28.1, from 7.0.0 up to 7.29.1, and from 8.0.0 up to 8.10.2. Users should upgrade to undici 6.28.1, 7.29.1, or 8.10.2.",
+          "Severity": "LOW",
+          "CweIDs": [
+            "CWE-444"
+          ],
+          "VendorSeverity": {
+            "amazon": 3,
+            "ghsa": 1,
+            "redhat": 1
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 3.7
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 3.7
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-18540",
+            "https://cna.openjsf.org/security-advisories.html",
+            "https://github.com/nodejs/undici",
+            "https://github.com/nodejs/undici/commit/0160a719063fb0a77f4fdf9500b9166b91e14329",
+            "https://github.com/nodejs/undici/commit/cd8af90b38ae33c2838d54a2d629774122effe95",
+            "https://github.com/nodejs/undici/commit/ce31bc824b578008faae5d3350da66c1b5f71548",
+            "https://github.com/nodejs/undici/releases/tag/v6.28.1",
+            "https://github.com/nodejs/undici/releases/tag/v7.29.1",
+            "https://github.com/nodejs/undici/releases/tag/v8.10.2",
+            "https://github.com/nodejs/undici/security/advisories/GHSA-r53p-7pc4-xj5r",
+            "https://hackerone.com/reports/3900104",
+            "https://hackerone.com/reports/3900615",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-18540",
+            "https://www.cve.org/CVERecord?id=CVE-2026-18540"
+          ],
+          "PublishedDate": "2026-09-04T18:17:50.02Z",
+          "LastModifiedDate": "2026-09-16T20:41:17.627Z"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="562" viewBox="0 0 1024 562" style="max-width: 1024px; width: 100%; height: auto;" role="img">
+  <rect width="100%" height="100%" rx="14" fill="#0a0810"/>
+  <rect x="0.5" y="0.5" width="1023" height="561" rx="14" fill="none" stroke="#2d2b31" stroke-width="1"/>
+  <text x="512" y="23" text-anchor="middle" font-family='ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace' font-size="13" fill="#8a8a8a">torlnk-plus</text>
+  <g font-family='ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace' font-size="16" fill="#ddd8ea">
+    <text x="435.2" y="84" textLength="9.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#5ae87a" font-weight="600">𐓏</text>
+    <rect x="387.2" y="90" width="9.6" height="11" fill="#faf6ff"/>
+    <rect x="396.8" y="90" width="9.6" height="22" fill="#f6edff"/>
+    <rect x="406.4" y="90" width="9.6" height="11" fill="#f1e4ff"/>
+    <rect x="425.6" y="90" width="9.6" height="22" fill="#e8d2fe"/>
+    <rect x="435.2" y="90" width="9.6" height="11" fill="#e3c9fe"/>
+    <rect x="444.8" y="90" width="9.6" height="22" fill="#dfc1fe"/>
+    <rect x="464" y="90" width="9.6" height="22" fill="#d6b2fe"/>
+    <rect x="473.6" y="90" width="9.6" height="11" fill="#d2affe"/>
+    <rect x="483.2" y="90" width="9.6" height="22" fill="#cfacfd"/>
+    <rect x="502.4" y="90" width="9.6" height="22" fill="#c8a7fd"/>
+    <rect x="540.8" y="90" width="9.6" height="22" fill="#ba9bfc"/>
+    <rect x="550.4" y="101" width="9.6" height="11" fill="#b698fb"/>
+    <rect x="569.6" y="90" width="9.6" height="22" fill="#af92fb"/>
+    <rect x="588.8" y="90" width="9.6" height="22" fill="#a88cfa"/>
+    <rect x="598.4" y="101" width="9.6" height="11" fill="#a589f9"/>
+    <rect x="608" y="90" width="9.6" height="11" fill="#a387f7"/>
+    <rect x="636.8" y="101" width="9.6" height="11" fill="#9b7ef0"/>
+    <rect x="396.8" y="112" width="9.6" height="22" fill="#9476ea"/>
+    <rect x="425.6" y="112" width="9.6" height="22" fill="#8c6de3"/>
+    <rect x="435.2" y="123" width="9.6" height="11" fill="#896be1"/>
+    <rect x="444.8" y="112" width="9.6" height="22" fill="#8768df"/>
+    <rect x="464" y="112" width="9.6" height="22" fill="#8262db"/>
+    <rect x="473.6" y="112" width="9.6" height="11" fill="#7f5fd9"/>
+    <rect x="483.2" y="123" width="9.6" height="11" fill="#7d5dd6"/>
+    <rect x="502.4" y="112" width="9.6" height="22" fill="#7758ce"/>
+    <rect x="512" y="123" width="9.6" height="11" fill="#7456c9"/>
+    <rect x="521.6" y="123" width="9.6" height="11" fill="#7154c5"/>
+    <rect x="540.8" y="112" width="9.6" height="22" fill="#6b50bc"/>
+    <rect x="560" y="112" width="9.6" height="11" fill="#664cb3"/>
+    <rect x="569.6" y="112" width="9.6" height="22" fill="#634aae"/>
+    <rect x="588.8" y="112" width="9.6" height="22" fill="#5d46a5"/>
+    <rect x="608" y="112" width="9.6" height="22" fill="#57429c"/>
+    <rect x="627.2" y="112" width="9.6" height="11" fill="#523e93"/>
+    <rect x="636.8" y="112" width="9.6" height="22" fill="#4f3c8f"/>
+    <rect x="646.4" y="112" width="9.6" height="11" fill="#4c3a8a"/>
+    <text x="291.2" y="172" textLength="441.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#e9e4f5">A curated, terminal-native torrent downloader.</text>
+    <text x="348.8" y="194" textLength="316.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill-opacity="0.55">games  ·  movies  ·  tv  ·  anime</text>
+    <text x="214.4" y="238" textLength="19.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#a78bfa">╭─</text>
+    <text x="243.2" y="238" textLength="57.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#a78bfa" font-weight="600">Search</text>
+    <text x="310.4" y="238" textLength="499.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#a78bfa">───────────────────────────────────────────────────╮</text>
+    <rect x="218.5" y="244" width="1.4" height="22" fill="#a78bfa"/>
+    <text x="233.6" y="260" textLength="9.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#a78bfa">❯</text>
+    <rect x="252.8" y="244" width="9.6" height="22" fill="#ddd8ea"/>
+    <text x="252.8" y="260" textLength="9.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#0a0810">S</text>
+    <text x="262.4" y="260" textLength="278.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill-opacity="0.55">earch or paste a magnet link…</text>
+    <rect x="804.1" y="244" width="1.4" height="22" fill="#a78bfa"/>
+    <text x="214.4" y="282" textLength="595.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#a78bfa">╰────────────────────────────────────────────────────────────╯</text>
+    <text x="406.4" y="326" textLength="9.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#b9a7e6">↵</text>
+    <text x="425.6" y="326" textLength="86.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill-opacity="0.55">search  ·</text>
+    <text x="531.2" y="326" textLength="28.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#b9a7e6">Tab</text>
+    <text x="569.6" y="326" textLength="57.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill-opacity="0.55">browse</text>
+    <rect x="41.6" y="508" width="86.4" height="22" fill="#211c2d"/>
+    <text x="41.6" y="524" textLength="86.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#86d6a2" font-weight="600">Protected</text>
+    <rect x="128" y="508" width="854.4" height="22" fill="#211c2d"/>
+    <text x="128" y="524" textLength="854.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#b9a7e6"> · 6/6 healthy · qB · ↓7.8 MB/s ↑345 KB/s                     Ctrl+P commands · 1–5 pages</text>
+  </g>
+</svg>

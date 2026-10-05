@@ -1,0 +1,23 @@
+
+
+ ╭─ Command Palette ──────────────────────────╮
+ │ > ▏                                        │
+ │ 1 / 18 commands                            │
+ │ › Go to Search                           1 │
+ │   Go to Downloads                        2 │
+ │   Go to Seeding                          3 │
+ │   Go to Settings                         4 │
+ │   Go to Health                           5 │
+ │   New search                             / │
+ │   Import torrent                         I │
+ │   Next download: qBittorrent               │
+ │   Next download: WebTorrent                │
+ │   Turn VPN off (Direct)                  V │
+ │   Reconnect services                       │
+ │ Press Enter to run this command.           │
+ │ ↑↓ choose · Enter run · Esc/Ctrl+P close   │
+ │                                            │
+ ╰────────────────────────────────────────────╯
+
+
+ Protected · 6/6 healthy · Command palette

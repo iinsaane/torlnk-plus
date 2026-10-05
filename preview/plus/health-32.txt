@@ -1,0 +1,15 @@
+ 1Find 2DL 3Seed 4Set 5Health
+ ╭─ Service health ───────────╮
+ │ supervisor · healthy       │
+ │ controller · healthy       │
+ │ gateway · healthy          │
+ │ search · healthy           │
+ │ qbittorrent · healthy      │
+ │ webtorrent · healthy       │
+ │                            │
+ │                            │
+ │                            │
+ │                            │
+ │                            │
+ ╰────────────────────────────╯
+ Protected · 6/6 healthy

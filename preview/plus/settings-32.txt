@@ -1,0 +1,15 @@
+ 1Find 2DL 3Seed 4Set 5Health
+ SETTINGS  ◆ Everyday  Advanced
+ ↑↓ move · Enter edit · Tab mo…
+ › Download backend qbittorre…
+   Global routing … vpn
+   VPN profile [re… Amsterdam…
+   Download folder… /home/ins…
+   Maximum active … 3
+   Download limit … 0
+   Upload limit (K… 0
+   Seed ratio thre… 0
+   Seed time thres… 0
+   After completion seed
+
+ Protected · 6/6 healthy

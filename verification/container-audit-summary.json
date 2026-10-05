@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-05",
+  "scanner": "Trivy 0.75.0",
+  "scope": "Final local alpha container images; vulnerability findings, not reachability or exploit certification. Counts are package-advisory instances, not unique CVEs. Historical scans are separate.",
+  "images": [
+    {
+      "component": "VPN gateway",
+      "artifact": "qmcgaw/gluetun:v3.41.3@sha256:fa19cc76b2af13d57a8d3dc3066f2ada061b1c761b8aecf989b3877c0486e027",
+      "imageID": "sha256:aa63666f60f7cc608cf7a14ab9c127de3f748b71ce0b83078c3ceea78796551f",
+      "report": "gluetun-candidate-image-audit.json",
+      "findings": {
+        "CRITICAL": 0,
+        "HIGH": 26,
+        "MEDIUM": 16,
+        "LOW": 13,
+        "UNKNOWN": 2
+      }
+    },
+    {
+      "component": "qBittorrent",
+      "artifact": "qbittorrentofficial/qbittorrent-nox:5.2.4-1@sha256:92bfd78d731e254ba64f62b77b0696add6447a33642ee5feda106a26b285aa7f",
+      "imageID": "sha256:dd9d91f629c25ea0b7758d3b618ac93c8b254e7b42a09b7f9f9c9b21828f1ba0",
+      "report": "qbittorrent-candidate-image-audit.json",
+      "findings": {
+        "CRITICAL": 0,
+        "HIGH": 10,
+        "MEDIUM": 13,
+        "LOW": 4,
+        "UNKNOWN": 4
+      }
+    },
+    {
+      "component": "Application worker",
+      "artifact": "torlnk-plus-worker-package-check:0.1.0-alpha.1",
+      "imageID": "sha256:ada644deb00ee40fd6833ad10f37e3b62d42b223ec34f8f7c0a16df2c820984e",
+      "report": "worker-image-audit.json",
+      "findings": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "UNKNOWN": 0
+      }
+    },
+    {
+      "component": "Direct gateway",
+      "artifact": "alpine:3.23@sha256:85fe1e81d6758c208f3e1eed4338a1997e19d4be002d4dd32d3100c9a8c010a0",
+      "imageID": "sha256:85fe1e81d6758c208f3e1eed4338a1997e19d4be002d4dd32d3100c9a8c010a0",
+      "report": "direct-gateway-image-audit.json",
+      "findings": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "UNKNOWN": 0
+      }
+    },
+    {
+      "component": "Stealth proxy",
+      "artifact": "torlnk-plus-wstunnel-release-check:0.1.0-alpha.1",
+      "imageID": "sha256:3ee1d8ff1004d0ce607387594b9faac5893e9e186efc708dfa4d14f2aaeb2295",
+      "report": "wstunnel-image-audit.json",
+      "findings": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MEDIUM": 2,
+        "LOW": 0,
+        "UNKNOWN": 1
+      }
+    }
+  ]
+}

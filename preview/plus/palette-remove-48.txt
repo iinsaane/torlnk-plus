@@ -1,0 +1,23 @@
+       𐓏
+  ▀█▀ █▀█ █▀█ █   █▄ █ █▄▀  ▄
+   █  █▄█ █▀▄ █▄▄ █ ▀█ █ █ ▀█▀
+ 1 Search  2 DL  3 Seed  4 Set  5 Health
+ ╭─ Command Palette ──────────────────────────╮
+ │ > delete▏                                  │
+ │ 1 / 1 commands                             │
+ │ › Remove selected entry         Delete / X │
+ │ Keep files; stop transfer and remove entr… │
+ │ ↑↓ choose · Enter run · Esc/Ctrl+P close   │
+ │                                            │
+ │                                            │
+ │                                            │
+ │                                            │
+ │                                            │
+ │                                            │
+ │                                            │
+ │                                            │
+ │                                            │
+ │                                            │
+ │                                            │
+ ╰────────────────────────────────────────────╯
+ Protected · 6/6 healthy · Command palette

@@ -1,0 +1,4 @@
+#!/bin/sh
+set -eu
+TORLNK_PLUS_ROOT=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+exec node "$TORLNK_PLUS_ROOT/dist/cli.cjs" "$@"

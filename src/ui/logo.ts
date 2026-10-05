@@ -1,7 +1,9 @@
+export const LOGO_TEXT = "torlnk+";
+
 export const LOGO_LINES: readonly string[] = [
   "      𐓏                     ",
-  " ▀█▀ █▀█ █▀█ █   █ █▄ █ █▄▀",
-  "  █  █▄█ █▀▄ █▄▄ █ █ ▀█ █ █",
+  " ▀█▀ █▀█ █▀█ █   █▄ █ █▄▀  ▄ ",
+  "  █  █▄█ █▀▄ █▄▄ █ ▀█ █ █ ▀█▀",
 ];
 
 export const LOGO_WIDTH = Math.max(...LOGO_LINES.map((l) => [...l].length));

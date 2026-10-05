@@ -1,0 +1,29 @@
+       𐓏
+  ▀█▀ █▀█ █▀█ █   █▄ █ █▄▀  ▄
+   █  █▄█ █▀▄ █▄▄ █ ▀█ █ █ ▀█▀
+ 1 Search  2 Downloads  3 Seeding  4 Settings  5 Health
+ ╭─ Downloads 2 ──────────────────────────────────────────────────────────────────────────────────╮
+ │ ❯ ↓ Controlled engineering dataset  qBittorrent · Downloading                                  │
+ │    591.28 MB / 953.67 MB  ↓ 7.8 MB/s  ↑ 120 KB/s  ETA 47s  18 peers                            │
+ │    ▋!▋ ▊ ▋!▌!▋ ▉ ▌!▋ ▋ █ ▍!▋ ▊ ▉ ▋!▋ ▉ ▋!▍!▋ █ ▍!▋!▊ ▉ ▍!▋ ▉ ▊ ▋!▋ █ ▋!▍!▊ █ ▍!▌!▉ ▉   62%     │
+ │ ╭─ Torrent details ────────────────────────────────────────────────────────────────────────╮   │
+ │ │ Files 1   Trackers 1   Pieces 82/120                                                     │   │
+ │ │ Uploaded 30.52 MB   Ratio 0.05                                                           │   │
+ │ │ Elapsed 5m                                                                               │   │
+ │ │ Path /home/user/Downloads/torlnk-plus                                                    │   │
+ │ │ dataset.bin  62%  953.67 MB                                                              │   │
+ │ │ working: https://tracker.example/announce                                                │   │
+ │ │                                                                                          │   │
+ │ │                                                                                          │   │
+ │ │                                                                                          │   │
+ │ │                                                                                          │   │
+ │ │                                                                                          │   │
+ │ │                                                                                          │   │
+ │ │                                                                                          │   │
+ │ ╰──────────────────────────────────────────────────────────────────────────────────────────╯   │
+ │ · missing  ! active  █ verified  ? unknown                                                     │
+ │ Delete/x remove  Enter close  PgUp/PgDn details  ↑/k ↓/j move                                  │
+ │                                                                                                │
+ │                                                                                                │
+ ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
+ Protected · 6/6 healthy · qB · ↓7.8 MB/s ↑345 KB/s                     Ctrl+P commands · 1–5 pages

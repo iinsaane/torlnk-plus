@@ -1,0 +1,23 @@
+       𐓏
+  ▀█▀ █▀█ █▀█ █   █▄ █ █▄▀  ▄
+   █  █▄█ █▀▄ █▄▄ █ ▀█ █ █ ▀█▀
+ 1 Search  2 DL  3 Seed  4 Set  5 Health
+ ╭─ Service health ───────────────────────────╮
+ │ supervisor · healthy                       │
+ │ Checked 11:23:54 PM · Last success 11:23:… │
+ │ controller · healthy                       │
+ │ Checked 11:23:54 PM · Last success 11:23:… │
+ │ gateway · healthy                          │
+ │ Checked 11:23:54 PM · Last success 11:23:… │
+ │ search · healthy                           │
+ │ Checked 11:23:54 PM · Last success 11:23:… │
+ │ qbittorrent · healthy                      │
+ │ Checked 11:23:54 PM · Last success 11:23:… │
+ │ webtorrent · healthy                       │
+ │ Checked 11:23:54 PM · Last success 11:23:… │
+ │                                            │
+ │                                            │
+ │                                            │
+ │                                            │
+ ╰────────────────────────────────────────────╯
+ Protected · 6/6 healthy        Ctrl+P commands

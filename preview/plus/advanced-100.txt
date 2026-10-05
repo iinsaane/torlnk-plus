@@ -1,0 +1,29 @@
+       𐓏
+  ▀█▀ █▀█ █▀█ █   █▄ █ █▄▀  ▄
+   █  █▄█ █▀▄ █▄▄ █ ▀█ █ █ ▀█▀
+ 1 Search  2 Downloads  3 Seeding  4 Settings  5 Health
+ ╭────────────────────────────────────────────────────────────────────────────────────────────────╮
+ │SETTINGS  Everyday  ◆ Advanced                                                                  │
+ │↑↓ select · Enter edit · Space change · Tab switch · Esc close                                  │
+ │› Import profile path                                                                           │
+ │  Import protocol                                        wireguard                              │
+ │  Stealth TLS endpoint                                                                          │
+ │  Stealth server name (optional SNI)                                                            │
+ │  OpenVPN username (optional)                                                                   │
+ │  OpenVPN password (optional)                                                                   │
+ │  Profile provider                                       windscribe                             │
+ │  Import profile                                         Import                                 │
+ │  Maximum connections                                    100                                    │
+ │  Listen port [restart]                                  6881                                   │
+ │  Forwarded port [restart]                               0                                      │
+ │  DHT                                                    On                                     │
+ │  Peer exchange                                          On                                     │
+ │  uTP                                                    On                                     │
+ │  Extra trackers [restart] (URLs)                                                               │
+ │  Compact display                                        Off                                    │
+ │  Refresh interval (ms)                                  1000                                   │
+ │  Piece refresh interval (ms)                            2000                                   │
+ │Import only profiles you trust.                                                                 │
+ │S save · A tabs · 1–5 main views                                                                │
+ ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
+ Protected · 6/6 healthy · qB · ↓7.8 MB/s ↑345 KB/s                     Ctrl+P commands · 1–5 pages

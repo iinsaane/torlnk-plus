@@ -1,0 +1,23 @@
+       𐓏
+  ▀█▀ █▀█ █▀█ █   █▄ █ █▄▀  ▄
+   █  █▄█ █▀▄ █▄▄ █ ▀█ █ █ ▀█▀
+ 1 Search  2 Downloads  3 Seeding  4 Settings  5 Health
+ ╭─ Service health ───────────────────────────────────────────────────────────╮
+ │ supervisor · healthy                                                       │
+ │ Checked 11:23:54 PM · Last success 11:23:54 PM                             │
+ │ controller · healthy                                                       │
+ │ Checked 11:23:54 PM · Last success 11:23:54 PM                             │
+ │ gateway · healthy                                                          │
+ │ Checked 11:23:54 PM · Last success 11:23:54 PM                             │
+ │ search · healthy                                                           │
+ │ Checked 11:23:54 PM · Last success 11:23:54 PM                             │
+ │ qbittorrent · healthy                                                      │
+ │ Checked 11:23:54 PM · Last success 11:23:54 PM                             │
+ │ webtorrent · healthy                                                       │
+ │ Checked 11:23:54 PM · Last success 11:23:54 PM                             │
+ │                                                                            │
+ │                                                                            │
+ │                                                                            │
+ │                                                                            │
+ ╰────────────────────────────────────────────────────────────────────────────╯
+ Protected · 6/6 healthy · qB · 2 torrents          Ctrl+P commands · 1–5 pages

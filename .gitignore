@@ -1,5 +1,11 @@
 node_modules/
 dist/
 .DS_Store
-package-lock.json
 !nix/package-lock.json
+*.conf
+*.ovpn
+.env
+.state/
+work/
+
+release/

@@ -1,0 +1,23 @@
+       𐓏
+  ▀█▀ █▀█ █▀█ █   █▄ █ █▄▀  ▄
+   █  █▄█ █▀▄ █▄▄ █ ▀█ █ █ ▀█▀
+ 1 Search  2 Downloads  3 Seeding  4 Settings  5 Health
+ ╭─ Downloads 2 ──────────────────────────────────────────────────────────────╮
+ │ ❯ ↓ Controlled engineering dataset  qBittorrent · Downloading              │
+ │    591.28 MB / 953.67 MB  ↓ 7.8 MB/s  ↑ 120 KB/s  ETA 47s  18 peers        │
+ │    ▊!▊ ▋!▋!▊ ▌!▊ ▊ ▌!▊ ▊ ▊!▊ ▊ ▌!▊ ▊ ▌!▊ ▊!▌!▊ ▊!▊!▊ ▌!▊ ▊ ▌!▊ ▊   62%     │
+ │   ↑ Reference sample collection  WebTorrent · Seeding                      │
+ │    953.67 MB / 953.67 MB  ↓ 0 B/s  ↑ 225 KB/s  ETA 0s  18 peers            │
+ │    █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █   100%    │
+ │ · missing  ! active  █ verified  ? unknown                                 │
+ │ Delete/x remove  Enter details  ↑/k ↓/j move  p pause  r recheck  e exp…   │
+ │                                                                            │
+ │                                                                            │
+ │                                                                            │
+ │                                                                            │
+ │                                                                            │
+ │                                                                            │
+ │                                                                            │
+ │                                                                            │
+ ╰────────────────────────────────────────────────────────────────────────────╯
+ Protected · 6/6 healthy · qB · 2 torrents          Ctrl+P commands · 1–5 pages

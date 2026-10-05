@@ -1,15 +1,32 @@
 #!/usr/bin/env node
 'use strict';
 
-var major = parseInt(process.versions.node.split('.')[0], 10);
-if (major < 22) {
+var args = process.argv.slice(2);
+var informational = ['doctor', '--doctor', '--help', '-h', 'help', '--version', '-V'].includes(args[0]);
+var nodeVersion = process.versions.node.split('.').map(function (part) { return parseInt(part, 10) || 0; });
+var supportedNode = nodeVersion[0] === 22
+  ? nodeVersion[1] > 22 || (nodeVersion[1] === 22 && nodeVersion[2] >= 2)
+  : nodeVersion[0] === 24
+    ? nodeVersion[1] >= 15
+    : nodeVersion[0] >= 26;
+if (!supportedNode && !informational) {
   process.stderr.write(
-    '\ntorlnk requires Node.js v22 or later.\n' +
+    '\ntorlnk-plus requires Node.js ^22.22.2, ^24.15.0, or >=26.0.0 (NPM 12 compatibility).\n' +
     'You are running v' + process.versions.node + '.\n\n' +
     'Upgrade:  https://nodejs.org\n' +
     'With nvm: nvm install 22 && nvm use 22\n\n'
   );
   process.exit(1);
+}
+
+// Diagnostics and informational commands stay available on unsupported Node
+// versions and must not load optional native WebRTC dependencies.
+if (informational) {
+  import('./plus.js').catch(function (err) {
+    process.stderr.write(String((err && err.message) || err) + '\n');
+    process.exit(1);
+  });
+  return;
 }
 
 // Resolve webrtc-polyfill to an inert stub: simple-peer then reports
@@ -41,10 +58,10 @@ function useWebrtcStub() {
 // are anyway. Presence is the switch, like TORLINK_NO_UPDATE_CHECK.
 if (process.env.TORLINK_NO_WEBRTC) {
   if (useWebrtcStub()) {
-    process.stderr.write('torlnk: WebRTC peers disabled by TORLINK_NO_WEBRTC.\n');
+    process.stderr.write('torlnk-plus: WebRTC peers disabled by TORLINK_NO_WEBRTC.\n');
   } else {
     process.stderr.write(
-      'torlnk: TORLINK_NO_WEBRTC needs Node 22.15 or later to take effect; ' +
+      'torlnk-plus: TORLINK_NO_WEBRTC needs Node 22.15 or later to take effect; ' +
         'WebRTC peers stay enabled on v' + process.versions.node + '.\n'
     );
   }
@@ -58,15 +75,15 @@ if (process.env.TORLINK_NO_WEBRTC) {
   } catch (err) {
     if (useWebrtcStub()) {
       process.stderr.write(
-        'torlnk: WebRTC peers unavailable (native module not installed); ' +
+        'torlnk-plus: WebRTC peers unavailable (native module not installed); ' +
           'TCP/UDP peers still work. https://github.com/baairon/torlink/issues/60\n'
       );
     } else {
       // Node 22.0 to 22.14 has no module.registerHooks, so the eager import
       // cannot be redirected; a clear explanation beats the raw module error.
       process.stderr.write(
-        '\ntorlnk needs the WebRTC native module (node-datachannel), and it is\n' +
-          'not installed. Either upgrade to Node 22.15+ (torlnk then runs\n' +
+        '\ntorlnk-plus needs the WebRTC native module (node-datachannel), and it is\n' +
+          'not installed. Either upgrade to Node 22.15+ (torlnk-plus then runs\n' +
           'without WebRTC peers), or install the build tools and reinstall:\n' +
           '  Fedora:  sudo dnf install cmake gcc-c++ openssl-devel libstdc++-static\n' +
           '  Debian / Ubuntu:  sudo apt install cmake g++ libssl-dev\n' +
@@ -80,7 +97,7 @@ if (process.env.TORLINK_NO_WEBRTC) {
   }
 }
 
-import('./index.js').catch(function (err) {
+import('./plus.js').catch(function (err) {
   process.stderr.write(String((err && err.message) || err) + '\n');
   process.exit(1);
 });

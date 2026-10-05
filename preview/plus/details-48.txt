@@ -1,0 +1,23 @@
+       𐓏
+  ▀█▀ █▀█ █▀█ █   █▄ █ █▄▀  ▄
+   █  █▄█ █▀▄ █▄▄ █ ▀█ █ █ ▀█▀
+ 1 Search  2 DL  3 Seed  4 Set  5 Health
+ ╭─ Downloads 2 ──────────────────────────────╮
+ │ ❯ ↓ Controlled engineering dataset         │
+ │    qBittorrent · Downloading · 62%         │
+ │    591.28 MB/953.67 MB  ↓ 7.8 MB/s         │
+ │    ↑ 120 KB/s  ETA 47s  18 peers           │
+ │    ▊!▋!▋!▊ ▋!▊!▋!▊!▋!▋!▊ ▊!▋!▋!▊           │
+ │ ╭─ Torrent details ────────────────────╮   │
+ │ │ Files 1   Trackers 1   Pieces 82/120 │   │
+ │ │ Uploaded 30.52 MB   Ratio 0.05       │   │
+ │ │ Elapsed 5m                           │   │
+ │ │ Path /home/user/Downloads/torlnk-pl… │   │
+ │ │                                      │   │
+ │ ╰──────────────────────────────────────╯   │
+ │ · missing  ! active  █ verified  ? unkn…   │
+ │ Delete/x remove Enter close PgUp/Dn ↑↓m…   │
+ │                                            │
+ │                                            │
+ ╰────────────────────────────────────────────╯
+ Protected · 6/6 healthy        Ctrl+P commands

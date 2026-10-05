@@ -50,7 +50,7 @@ describe("uint8-util quarantine pin", () => {
 // prebuilt line. The 0.33 loader still checks a local build/ directory before
 // the platform package, which keeps scripts/ensure-webrtc.cjs working as the
 // compile-from-source fallback where no prebuilt exists.
-const PREBUILT_LINE = "^0.33.1";
+const PREBUILT_LINE = "0.33.1";
 const ANDROID_PUBLISHED = "0.33.0";
 
 function atLeast(version: string, min: string): boolean {

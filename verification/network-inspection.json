@@ -1,0 +1,52 @@
+{
+  "mode": "vpn",
+  "passed": true,
+  "checks": [
+    {
+      "name": "workers",
+      "passed": true,
+      "detail": "Controller, search, WebTorrent, and qBittorrent must be running"
+    },
+    {
+      "name": "network namespace",
+      "passed": true,
+      "detail": "All application workers share the selected gateway namespace"
+    },
+    {
+      "name": "worker privileges",
+      "passed": true,
+      "detail": "Application workers have no added network or system administration capability"
+    },
+    {
+      "name": "management bindings",
+      "passed": true,
+      "detail": "Published management ports bind to IPv4 localhost only"
+    },
+    {
+      "name": "IPv6",
+      "passed": true,
+      "detail": "Managed IPv6 is disabled"
+    },
+    {
+      "name": "default firewall policies",
+      "passed": true,
+      "detail": "VPN INPUT, FORWARD, and OUTPUT default to DROP"
+    },
+    {
+      "name": "tunnel egress",
+      "passed": true,
+      "detail": "VPN permits application egress through tun0"
+    },
+    {
+      "name": "tunnel interface",
+      "passed": true,
+      "detail": "VPN tunnel interface is up"
+    },
+    {
+      "name": "gateway health",
+      "passed": true,
+      "detail": "VPN gateway health check passes"
+    }
+  ],
+  "limitation": "Read-only configuration and live rule inspection. Does not establish crash/startup leak-test coverage or validate every allowed exception."
+}

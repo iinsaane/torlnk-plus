@@ -1,0 +1,29 @@
+       𐓏
+  ▀█▀ █▀█ █▀█ █   █▄ █ █▄▀  ▄
+   █  █▄█ █▀▄ █▄▄ █ ▀█ █ █ ▀█▀
+ 1 Search  2 Downloads  3 Seeding  4 Settings  5 Health
+ ╭────────────────────────────────────────────────────────────────────────────────────────────────╮
+ │SETTINGS  ◆ Everyday  Advanced                                                                  │
+ │↑↓ select · Enter edit · Space change · Tab switch · Esc close                                  │
+ │› Download backend                                       qbittorrent                            │
+ │  Global routing [restart]                               vpn                                    │
+ │  VPN profile [restart]                                  Amsterdam · Windscribe                 │
+ │  Download folder [restart]                              /home/insane/Downloads/torlnk-plus     │
+ │  Maximum active downloads                               3                                      │
+ │  Download limit (KiB/s, 0 = unlimited)                  0                                      │
+ │  Upload limit (KiB/s, 0 = unlimited)                    0                                      │
+ │  Seed ratio threshold (0 = disabled)                    0                                      │
+ │  Seed time threshold (minutes, 0 = disabled)            0                                      │
+ │  After completion                                       seed                                   │
+ │  Search category                                        all                                    │
+ │  Enabled provider IDs (comma separated)                 fitgirl,yts,tpb-movies,x1337-movies,e… │
+ │  Search timeout (ms)                                    15000                                  │
+ │  Restart backend                                        Reconnect                              │
+ │  Stop background service                                Stop                                   │
+ │  Remove selected profile                                Amsterdam · Windscribe                 │
+ │S save · A tabs · 1–5 main views                                                                │
+ │                                                                                                │
+ │                                                                                                │
+ │                                                                                                │
+ ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
+ Protected · 6/6 healthy · qB · ↓7.8 MB/s ↑345 KB/s                     Ctrl+P commands · 1–5 pages

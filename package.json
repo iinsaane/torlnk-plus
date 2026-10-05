@@ -1,30 +1,42 @@
 {
-  "name": "torlnk",
-  "version": "1.9.0",
-  "description": "A sleek, zero-setup torrent finder and downloader that lives right in your terminal.",
+  "name": "torlnk-plus",
+  "version": "0.1.0-alpha.1",
+  "description": "Torlnk terminal fork with selectable WebTorrent and qBittorrent backends and managed VPN routing",
   "type": "module",
   "bin": {
-    "torlnk": "./dist/cli.cjs"
+    "torlnk-plus": "dist/cli.cjs"
   },
   "files": [
     "dist",
-    "preview",
-    "scripts/ensure-webrtc.cjs"
+    "containers",
+    "README.md",
+    "LICENSE",
+    "README.upstream.md",
+    "VERIFICATION.md",
+    "SECURITY.md",
+    "CHANGELOG.md",
+    "docs"
   ],
   "engines": {
-    "node": ">=22"
+    "node": "^22.22.2 || ^24.15.0 || >=26.0.0"
   },
   "scripts": {
-    "dev": "tsx src/index.tsx",
+    "dev": "node --import ./scripts/native-loader.mjs ./node_modules/tsx/dist/cli.mjs src/plus/index.tsx",
     "build": "tsup",
     "postbuild": "node scripts/postbuild.cjs",
-    "start": "node dist/index.js",
+    "start": "node dist/cli.cjs",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run",
+    "test": "node --import ./scripts/native-loader.mjs ./node_modules/vitest/vitest.mjs run",
     "verify:seeding": "tsx scripts/verify-seeding.ts",
     "previews": "tsx scripts/render-previews.tsx",
-    "postinstall": "node scripts/ensure-webrtc.cjs",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "previews:plus": "tsx scripts/render-plus-previews.tsx",
+    "verify:managed": "node --import ./scripts/native-loader.mjs ./node_modules/tsx/dist/cli.mjs scripts/verify-managed.ts",
+    "verify:backends": "node --import ./scripts/native-loader.mjs ./node_modules/tsx/dist/cli.mjs scripts/verify-backends.ts",
+    "verify:supervisor": "node --import ./scripts/native-loader.mjs ./node_modules/tsx/dist/cli.mjs scripts/verify-supervisor.ts",
+    "release:package": "node scripts/package-release.mjs",
+    "verify:package": "node scripts/verify-package.mjs",
+    "verify:network": "node --import ./scripts/native-loader.mjs --import tsx scripts/verify-network.ts"
   },
   "keywords": [
     "torrent",
@@ -39,45 +51,47 @@
     "tui",
     "terminal",
     "cli",
-    "ink",
-    "zero-configuration",
-    "zero-setup",
-    "fitgirl"
+    "ink"
   ],
-  "author": "bairon",
+  "author": "Torlnk upstream and torlnk-plus contributors",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/baairon/torlink.git"
-  },
-  "homepage": "https://torlink.bairon.dev",
-  "bugs": {
-    "url": "https://github.com/baairon/torlink/issues"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
   "dependencies": {
-    "create-torrent": "^6.1.2",
-    "env-paths": "^4.0.0",
-    "ink": "^7.0.5",
-    "parse-torrent": "^11.0.21",
-    "react": "^19.2.7",
+    "create-torrent": "6.1.2",
+    "env-paths": "4.0.0",
+    "ink": "7.1.0",
+    "parse-torrent": "11.0.21",
+    "react": "19.2.7",
     "uint8-util": "2.2.6",
-    "webtorrent": "^2.4.1"
+    "webtorrent": "2.8.5"
   },
   "overrides": {
     "@node-datachannel/android-arm64": "0.33.0",
-    "node-datachannel": "^0.33.1",
-    "uint8-util": "2.2.6"
+    "node-datachannel": "0.33.1",
+    "uint8-util": "2.2.6",
+    "ip": "npm:@bybrave/ip2@3.0.0"
   },
   "devDependencies": {
-    "@types/node": "^25.9.2",
-    "@types/react": "^19.2.17",
-    "ink-testing-library": "^4.0.0",
-    "tsup": "^8.5.1",
-    "tsx": "^4.22.4",
-    "typescript": "^6.0.3",
-    "vitest": "^4.1.8"
-  }
+    "@types/node": "25.9.4",
+    "@types/react": "19.2.17",
+    "ink-testing-library": "4.0.0",
+    "tsup": "8.5.1",
+    "tsx": "4.22.4",
+    "typescript": "6.0.3",
+    "vitest": "4.1.11"
+  },
+  "private": true,
+  "publishConfig": {
+    "access": "public",
+    "tag": "alpha",
+    "ignoreScripts": true
+  },
+  "bundleDependencies": [
+    "create-torrent",
+    "env-paths",
+    "ink",
+    "parse-torrent",
+    "react",
+    "uint8-util",
+    "webtorrent"
+  ]
 }

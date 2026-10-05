@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="628" viewBox="0 0 1024 628" style="max-width: 1024px; width: 100%; height: auto;" role="img">
+  <rect width="100%" height="100%" rx="14" fill="#0a0810"/>
+  <rect x="0.5" y="0.5" width="1023" height="627" rx="14" fill="none" stroke="#2d2b31" stroke-width="1"/>
+  <text x="512" y="23" text-anchor="middle" font-family='ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace' font-size="13" fill="#8a8a8a">torlnk-plus</text>
+  <g font-family='ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace' font-size="16" fill="#ddd8ea">
+    <text x="166.4" y="84" textLength="19.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#a78bfa">╭─</text>
+    <text x="195.2" y="84" textLength="144" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#a78bfa" font-weight="600">Command Palette</text>
+    <text x="348.8" y="84" textLength="508.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#a78bfa">────────────────────────────────────────────────────╮</text>
+    <rect x="170.5" y="90" width="1.4" height="22" fill="#a78bfa"/>
+    <text x="185.6" y="106" textLength="28.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#a78bfa" font-weight="600">&gt; ▏</text>
+    <rect x="852.1" y="90" width="1.4" height="22" fill="#a78bfa"/>
+    <rect x="170.5" y="112" width="1.4" height="22" fill="#a78bfa"/>
+    <text x="185.6" y="128" textLength="144" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#b9a7e6" fill-opacity="0.55">1 / 18 commands</text>
+    <rect x="852.1" y="112" width="1.4" height="22" fill="#a78bfa"/>
+    <rect x="170.5" y="134" width="1.4" height="22" fill="#a78bfa"/>
+    <rect x="185.6" y="134" width="652.8" height="22" fill="#30263f"/>
+    <text x="185.6" y="150" textLength="652.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#a78bfa" font-weight="600">› Go to Search                                                     1</text>
+    <rect x="852.1" y="134" width="1.4" height="22" fill="#a78bfa"/>
+    <rect x="170.5" y="156" width="1.4" height="22" fill="#a78bfa"/>
+    <text x="204.8" y="172" textLength="633.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#e9e4f5">Go to Downloads                                                  2</text>
+    <rect x="852.1" y="156" width="1.4" height="22" fill="#a78bfa"/>
+    <rect x="170.5" y="178" width="1.4" height="22" fill="#a78bfa"/>
+    <text x="204.8" y="194" textLength="633.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#e9e4f5">Go to Seeding                                                    3</text>
+    <rect x="852.1" y="178" width="1.4" height="22" fill="#a78bfa"/>
+    <rect x="170.5" y="200" width="1.4" height="22" fill="#a78bfa"/>
+    <text x="204.8" y="216" textLength="633.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#e9e4f5">Go to Settings                                                   4</text>
+    <rect x="852.1" y="200" width="1.4" height="22" fill="#a78bfa"/>
+    <rect x="170.5" y="222" width="1.4" height="22" fill="#a78bfa"/>
+    <text x="204.8" y="238" textLength="633.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#e9e4f5">Go to Health                                                     5</text>
+    <rect x="852.1" y="222" width="1.4" height="22" fill="#a78bfa"/>
+    <rect x="170.5" y="244" width="1.4" height="22" fill="#a78bfa"/>
+    <text x="204.8" y="260" textLength="633.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#e9e4f5">New search                                                       /</text>
+    <rect x="852.1" y="244" width="1.4" height="22" fill="#a78bfa"/>
+    <rect x="170.5" y="266" width="1.4" height="22" fill="#a78bfa"/>
+    <text x="204.8" y="282" textLength="633.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#e9e4f5">Import torrent                                                   I</text>
+    <rect x="852.1" y="266" width="1.4" height="22" fill="#a78bfa"/>
+    <rect x="170.5" y="288" width="1.4" height="22" fill="#a78bfa"/>
+    <text x="204.8" y="304" textLength="249.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#e9e4f5">Next download: qBittorrent</text>
+    <rect x="852.1" y="288" width="1.4" height="22" fill="#a78bfa"/>
+    <rect x="170.5" y="310" width="1.4" height="22" fill="#a78bfa"/>
+    <text x="204.8" y="326" textLength="240" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#e9e4f5">Next download: WebTorrent</text>
+    <rect x="852.1" y="310" width="1.4" height="22" fill="#a78bfa"/>
+    <rect x="170.5" y="332" width="1.4" height="22" fill="#a78bfa"/>
+    <text x="204.8" y="348" textLength="633.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#e9e4f5">Turn VPN off (Direct)                                            V</text>
+    <rect x="852.1" y="332" width="1.4" height="22" fill="#a78bfa"/>
+    <rect x="170.5" y="354" width="1.4" height="22" fill="#a78bfa"/>
+    <text x="204.8" y="370" textLength="172.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#e9e4f5">Reconnect services</text>
+    <rect x="852.1" y="354" width="1.4" height="22" fill="#a78bfa"/>
+    <rect x="170.5" y="376" width="1.4" height="22" fill="#a78bfa"/>
+    <text x="185.6" y="392" textLength="307.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#e9e4f5" fill-opacity="0.55">Press Enter to run this command.</text>
+    <rect x="852.1" y="376" width="1.4" height="22" fill="#a78bfa"/>
+    <rect x="170.5" y="398" width="1.4" height="22" fill="#a78bfa"/>
+    <text x="185.6" y="414" textLength="384" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#b9a7e6" fill-opacity="0.55">↑↓ choose · Enter run · Esc/Ctrl+P close</text>
+    <rect x="852.1" y="398" width="1.4" height="22" fill="#a78bfa"/>
+    <rect x="170.5" y="420" width="1.4" height="22" fill="#a78bfa"/>
+    <rect x="852.1" y="420" width="1.4" height="22" fill="#a78bfa"/>
+    <text x="166.4" y="458" textLength="691.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#a78bfa">╰──────────────────────────────────────────────────────────────────────╯</text>
+    <rect x="41.6" y="574" width="86.4" height="22" fill="#211c2d"/>
+    <text x="41.6" y="590" textLength="86.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#86d6a2" font-weight="600">Protected</text>
+    <rect x="128" y="574" width="854.4" height="22" fill="#211c2d"/>
+    <text x="128" y="590" textLength="854.4" lengthAdjust="spacingAndGlyphs" xml:space="preserve" fill="#b9a7e6"> · 6/6 healthy · Command palette                                                         </text>
+  </g>
+</svg>

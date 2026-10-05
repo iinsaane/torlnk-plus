@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-05",
+  "version": "0.1.0-alpha.1",
+  "platform": "Linux x86_64",
+  "node": "26.8.1",
+  "npm": "12.0.2",
+  "docker": "29.7.2",
+  "regression": {
+    "command": "npm test",
+    "passedTests": 589,
+    "passedFiles": 75,
+    "failures": 0
+  },
+  "typecheck": "passed",
+  "productionBuild": "passed",
+  "productionNpmAudit": {
+    "total": 0
+  },
+  "managedBackend": {
+    "version": "qBittorrent 5.2.4",
+    "checks": [
+      "managed qBittorrent rejects unauthenticated HTTP access",
+      "qBittorrent adapter authenticates and starts against the managed instance",
+      "torrent file imports, reports verified-piece/export details, and pauses a live transfer",
+      "qBittorrent details, verified piece state, and exported torrent metadata match the source",
+      "restart preserves the manual pause and resume downloads bytes with matching SHA-256",
+      "missing file recheck and resumed peer transfer restore matching SHA-256",
+      "remove without delete removes the torrent while preserving downloaded data",
+      "magnet add acquires real metadata from the controlled peer"
+    ]
+  },
+  "supervisor": {
+    "checks": [
+      "CLI exits while the supervisor remains reachable; first run stays blocked until chosen",
+      "Explicit Direct setup starts controller, search, WebTorrent and qBittorrent with individual health",
+      "Both clients operate together; cross-backend duplicates retain original ownership",
+      "Managed namespace replacement preserves manually paused and active transfers",
+      "Controller container restart restores shared capacity policy and preserves explicit pause",
+      "Failed VPN transition persists VPN selection and remains blocked without fallback",
+      "Explicit Direct recovery restores only prior active transfers",
+      "Network workers have selected data/settings mounts, without private VPN or supervisor state",
+      "Separate stop action shuts down background service"
+    ],
+    "finalWorkerToolingRemovalRetest": "passed all 9 checks"
+  },
+  "package": {
+    "offlineInstallation": "passed with empty npm cache and scripts disabled",
+    "cliHelpVersion": "passed",
+    "doctorNoStateCreation": "passed",
+    "stoppedServiceStatusNoStateCreation": "passed",
+    "extractedNpmWorkerBuild": "passed",
+    "cleanSourceInstall": "passed offline with lifecycle scripts disabled; prebuilt CLI and doctor passed without creating state"
+  },
+  "limitations": [
+    "Remote CI and fresh distribution installs have not run.",
+    "Updated Gluetun 3.41.3 live Windscribe handshake is unverified; earlier live checks used 3.40.0.",
+    "Full crash/startup/restart/mode-change leak matrix is unverified.",
+    "TCP 443 and Stealth have no live protocol-specific verification.",
+    "Registry name check is not a reservation; publisher authentication and GitHub owner are pending."
+  ],
+  "containers": {
+    "finalNpmArchiveWorkerBuild": "passed independently",
+    "workerWebTorrentInitialization": "passed without npm/npx",
+    "stealthBuildAndModuleVerification": "passed independently",
+    "stealthHelpFlags": "passed; live transport unverified",
+    "scanSummary": "container-audit-summary.json"
+  }
+}

@@ -1,0 +1,23 @@
+       𐓏
+  ▀█▀ █▀█ █▀█ █   █▄ █ █▄▀  ▄
+   █  █▄█ █▀▄ █▄▄ █ ▀█ █ █ ▀█▀
+ 1 Search  2 DL  3 Seed  4 Set  5 Health
+ ╭─ Downloads 2 ──────────────────────────────╮
+ │ ❯ ↓ Controlled engineering dataset         │
+ │    qBittorrent · Downloading · 62%         │
+ │    591.28 MB/953.67 MB  ↓ 7.8 MB/s         │
+ │    ↑ 120 KB/s  ETA 47s  18 peers           │
+ │    ▊!▋!▋!▊ ▋!▊!▋!▊!▋!▋!▊ ▊!▋!▋!▊           │
+ │   ↑ Reference sample collection            │
+ │    WebTorrent · Seeding · 100%             │
+ │    953.67 MB/953.67 MB  ↓ 0 B/s            │
+ │    ↑ 225 KB/s  ETA 0s  18 peers            │
+ │    █ █ █ █ █ █ █ █ █ █ █ █ █ █ █           │
+ │ · missing  ! active  █ verified  ? unkn…   │
+ │ Delete/x remove Enter info ↑↓move          │
+ │                                            │
+ │                                            │
+ │                                            │
+ │                                            │
+ ╰────────────────────────────────────────────╯
+ Protected · 6/6 healthy        Ctrl+P commands

@@ -1,0 +1,23 @@
+
+
+
+
+
+                                𐓏
+                           ▀█▀ █▀█ █▀█ █   █▄ █ █▄▀  ▄
+                            █  █▄█ █▀▄ █▄▄ █ ▀█ █ █ ▀█▀
+
+                 A curated, terminal-native torrent downloader.
+                       games  ·  movies  ·  tv  ·  anime
+
+         ╭─ Search ───────────────────────────────────────────────────╮
+         │ ❯ Search or paste a magnet link…                           │
+         ╰────────────────────────────────────────────────────────────╯
+
+                             ↵ search  ·  Tab browse
+
+
+
+
+
+ Protected · 6/6 healthy · qB · 2 torrents          Ctrl+P commands · 1–5 pages

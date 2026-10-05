@@ -1,0 +1,23 @@
+       𐓏
+  ▀█▀ █▀█ █▀█ █   █▄ █ █▄▀  ▄
+   █  █▄█ █▀▄ █▄▄ █ ▀█ █ █ ▀█▀
+ 1 Search  2 DL  3 Seed  4 Set  5 Health
+ ╭────────────────────────────────────────────╮
+ │SETTINGS  ◆ Everyday  Advanced              │
+ │↑↓ select · Enter edit · Space change · Tab…│
+ │› Download backend         qbittorrent      │
+ │  Global routing [restart] vpn              │
+ │  VPN profile [restart]    Amsterdam · Win… │
+ │  Download folder [restar… /home/insane/Do… │
+ │  Maximum active downloads 3                │
+ │  Download limit (KiB/s, … 0                │
+ │  Upload limit (KiB/s, 0 … 0                │
+ │  Seed ratio threshold (0… 0                │
+ │  Seed time threshold (mi… 0                │
+ │  After completion         seed             │
+ │  Search category          all              │
+ │  Enabled provider IDs (c… fitgirl,yts,tpb… │
+ │S save · A tabs · 1–5 main views            │
+ │                                            │
+ ╰────────────────────────────────────────────╯
+ Protected · 6/6 healthy        Ctrl+P commands

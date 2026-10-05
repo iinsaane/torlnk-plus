@@ -1,0 +1,23 @@
+       𐓏
+  ▀█▀ █▀█ █▀█ █   █▄ █ █▄▀  ▄
+   █  █▄█ █▀▄ █▄▄ █ ▀█ █ █ ▀█▀
+ 1 Search  2 DL  3 Seed  4 Set  5 Health
+ ╭────────────────────────────────────────────╮
+ │SETTINGS  Everyday  ◆ Advanced              │
+ │↑↓ select · Enter edit · Space change · Tab…│
+ │› Import profile path                       │
+ │  Import protocol          wireguard        │
+ │  Stealth TLS endpoint                      │
+ │  Stealth server name (op…                  │
+ │  OpenVPN username (optio…                  │
+ │  OpenVPN password (optio…                  │
+ │  Profile provider         windscribe       │
+ │  Import profile           Import           │
+ │  Maximum connections      100              │
+ │  Listen port [restart]    6881             │
+ │  Forwarded port [restart] 0                │
+ │  DHT                      On               │
+ │Import only profiles you trust.             │
+ │S save · A tabs · 1–5 main views            │
+ ╰────────────────────────────────────────────╯
+ Protected · 6/6 healthy        Ctrl+P commands

@@ -2,7 +2,7 @@ import { Box, Text, useInput, useStdin } from "ink";
 import { Logo } from "../components/Logo";
 import { UpdateBanner } from "../components/UpdateBanner";
 import { SearchBar } from "../components/SearchBar";
-import { LOGO_WIDTH } from "../logo";
+import { LOGO_TEXT, LOGO_WIDTH } from "../logo";
 import { useStore } from "../store";
 import { sourcesByGroup } from "../../sources/registry";
 import { COLOR, ICON } from "../theme";
@@ -43,7 +43,7 @@ export function Splash({
         <Logo />
       ) : (
         <Text bold color={COLOR.accent}>
-          torlink
+          {LOGO_TEXT}
         </Text>
       )}
       <Box marginTop={2}>

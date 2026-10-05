@@ -1,0 +1,23 @@
+       𐓏
+  ▀█▀ █▀█ █▀█ █   █▄ █ █▄▀  ▄
+   █  █▄█ █▀▄ █▄▄ █ ▀█ █ █ ▀█▀
+ 1 Search  2 DL  3 Seed  4 Set  5 Health
+ ╭─ Search ───────────────────────────────────╮
+ │ ❯ sample                                   │
+ ╰────────────────────────────────────────────╯
+ ╭─ Results 2 ────────────────────────────────╮
+ │ FROM SEEDS      SIZE TITLE                 │
+ │ YTS    218 953.67 MB Controlled engineeri… │
+ │ YTS     64 495.91 MB Reference sample col… │
+ │                                            │
+ │                                            │
+ │                                            │
+ │                                            │
+ │                                            │
+ │                                            │
+ │                                            │
+ │                                            │
+ │                                            │
+ ╰────────────────────────────────────────────╯
+
+ Protected · 6/6 healthy        Ctrl+P commands

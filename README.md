@@ -1,110 +1,157 @@
-<p align="center">
-  <img src="preview/splash.svg" alt="torlink, curated torrents straight from your terminal" style="max-width: 832px; width: 100%; height: auto;">
-</p>
+# Torlnk+
 
-Finding a torrent these days sucks. One site is a minefield of fake download buttons. Another hides the real link under a popup that spawns two more tabs. And after all that, half the results are dead, zero seeders.
+A Linux terminal fork of [Torlnk](https://github.com/baairon/torlink), with selectable qBittorrent and WebTorrent clients, optional Windscribe routing, settings, real piece maps, and service health. Based on upstream commit `467c0e4c6c87e1977814e9d83649968ef7d8f088`; upstream MIT attribution is retained in LICENSE and README.upstream.md.
 
-torlink is a torrent finder that lives in your terminal, with zero setup and nothing to configure. One search checks a short, curated list of reputable sources at once, and whatever you pick downloads straight to your computer. The files are yours, saved to your downloads folder.
+## Install the Linux alpha
 
-## Get started
+Version `0.1.0-alpha.1` supports Linux x86_64 with Node 22.22.2+, 24.15+, or 26+, rootful Docker Engine 28 or newer, and Docker Compose v2 or newer. VPN mode requires `/dev/net/tun`. Docker must be accessible to your user and download folders must be writable. The native qBittorrent installation is unused. Other architectures, macOS, Windows, rootless Docker, and SELinux configurations remain unverified.
 
-1. **Install Node** (from [nodejs.org](https://nodejs.org)), it's all torlink needs.
-2. **Open your terminal.**
-3. **Start it:**
+Install the npm tarball downloaded from the release with installation scripts disabled:
 
-   ```sh
-   npx torlnk
-   ```
+```sh
+npm install --global --ignore-scripts ./torlnk-plus-0.1.0-alpha.1.tgz
+torlnk-plus doctor
+torlnk-plus
+```
 
-That's the only thing you'll type. torlink opens straight to a search bar: search for what you want, paste in a magnet link or a bare infohash, drag a `.torrent` file from your file manager onto the window, or just press Enter on an empty box to browse the curated library. From there it's all keypresses, nothing to memorize, and `?` brings up the full list anytime.
+Or unpack the source archive, keep its directory available, and use its prebuilt CLI:
 
-## Finding something
+```sh
+tar -xzf torlnk-plus-0.1.0-alpha.1-source.tar.gz
+cd torlnk-plus-0.1.0-alpha.1-source
+npm install --global --ignore-scripts npm@12.0.2
+npm ci --omit=dev --ignore-scripts
+./torlnk-plus doctor
+./torlnk-plus
+```
 
-Type what you're looking for and press Enter. Results stream in from every source as they answer, tagged with size and how many people are sharing each one, so you can see what'll come down fast. Arrow to what you want and press `d` to save it, or `shift+d` to pick a different folder for just that download.
+`doctor --json` produces a machine-readable preflight without starting downloads or creating configuration directories. Normal startup checks required dependencies, routing requirements, directories, and management ports. `status` and `stop` remain accessible independently of startup checks. The alpha has no automatic updater; stop the background service before replacing an installed release. Back up the private state directory before upgrading. Protect that backup as you would the VPN keys.
 
-<p align="center">
-  <img src="preview/browse.svg" alt="torlink's browse view: the sidebar, the search bar, and merged results from every source" style="max-width: 832px; width: 100%; height: auto;">
-</p>
+## Build from source
 
-## Your downloads
+For source installation and development, use npm 12.0.2 or newer with a supported Node version. npm 10 can loop while resolving this fork's pinned WebTorrent overrides. The published tarball carries bundled dependencies and does not resolve that tree again:
 
-Active downloads sit up top with their progress, speed, and time left; when one finishes it drops into Recently downloaded just below, so the list stays tidy. Everything's still there when you come back, and anything interrupted picks up where it left off.
+```sh
+npm ci --ignore-scripts
+npm run build
+./torlnk-plus
+```
 
-Downloads run in the background while you keep searching, so you can queue up as many as you want. They save to your downloads folder, and the Downloads pane keeps tabs on each one; press `o` anytime to change where that is, or grab one result with `shift+d` to send it somewhere else without touching the default. When something finishes it keeps seeding automatically so the next person can find it too, and the Seeding tab lets you pause or stop that anytime.
+The app opens on the original Torlnk-style search page with the search field focused. Routing and service health share one bottom status bar. On first run, the status bar asks you to choose a route; press **4** to open Settings and make an explicit routing choice. Select **Global routing**, press Space to choose Direct or VPN, then **S** to save. VPN requires an imported profile. **Tab** switches between Everyday and Advanced settings. Select a row with the arrows, use Enter to edit, and save with S.
 
-<p align="center">
-  <img src="preview/downloads.svg" alt="torlink's Downloads pane: live progress on top, recently downloaded below" style="max-width: 832px; width: 100%; height: auto;">
-</p>
+To create the separate `torlnk-plus` command, optionally run `npm link` from this checkout. The included `./torlnk-plus` launcher works directly from this checkout. Otherwise use `node dist/cli.cjs` in place of `torlnk-plus` in the commands below. Keep this checkout available: the supervisor builds the managed workers from it.
 
-When a download comes with several videos or tracks, torlink drops a `playlist.m3u` into each folder holding more than one, so a course split into modules plays straight through in order. Run `torlnk --no-playlist` if you'd rather it didn't.
+## Windscribe first
 
-## What it searches
+Import a WireGuard profile before selecting VPN:
 
-A short, hand-picked list of trusted sources:
+```sh
+node dist/cli.cjs profile import /absolute/path/Windscribe-profile.conf wireguard
+```
 
-| Category | Sources |
+The command returns a profile ID. In Settings, choose that VPN profile and VPN routing, then save. Or:
+
+```sh
+node dist/cli.cjs vpn on PROFILE_ID
+node dist/cli.cjs vpn off
+```
+
+The global **V** key also toggles VPN/direct routing intentionally, without repeated confirmation. Switching pauses and checkpoints transfers and searches, replaces the gateway namespace, then restores the active transfers. Manually paused torrents stay paused. `Protected` requires the gateway health check and an active tunnel interface. Tunnel failure changes the state to `Blocked`; it never selects Direct automatically.
+
+WireGuard remains UDP, including on port 443. For a network that blocks UDP, import a real OpenVPN **TCP** profile whose remote endpoint uses **443**. In Advanced settings, select OpenVPN and provide its username/password if they are not inline. Password entry is masked. Certificate material must be inline; executable hooks and external file references are rejected.
+
+Stealth uses the official [Windscribe tunnel proxy](https://github.com/Windscribe/wstunnel), type 2 TLS transport. Import an OpenVPN TCP profile plus an explicit TLS endpoint, with optional server name:
+
+```sh
+node dist/cli.cjs profile import /absolute/path/profile.ovpn stealth TLS_HOST:443 OPTIONAL_SNI
+```
+
+Stealth preserves the inner VPN CA and server certificate verification. It does not infer a TLS relay from an ordinary VPN address. TCP 443 and Stealth remain experimental pending live tests with matching profiles and credentials. Account login, subscriptions, and automatic forwarded-port renewal are deferred.
+
+An optional manually assigned forwarded port opens that port in the VPN firewall and configures qBittorrent's listener. WebTorrent uses the next port to avoid competing for the same socket; it can make outbound peer connections. The default listen ports are 6881 and 6882. The app does not directly edit UFW, firewalld, or installed Windscribe settings. Docker creates host networking and firewall rules; coexistence with host firewall configurations remains unverified. Managed IPv6 is disabled in v1.
+
+## Terminal controls
+
+| Key | Action |
 | --- | --- |
-| Games | FitGirl |
-| Movies | YTS, The Pirate Bay, 1337x, BitTorrented |
-| TV | EZTV, The Pirate Bay, 1337x, BitTorrented |
-| Anime | Nyaa, SubsPlease |
+| Ctrl+P / : outside text editing | Open the searchable command palette; Ctrl+P works from any view or editor |
+| 1 / 2 / 3 / 4 / 5 | Search / Downloads / Seeding / Settings / Health, outside an active text editor |
+| / | Focus a new search or magnet, including queries beginning with a number |
+| I | Import a torrent file by absolute path |
+| B in Search | Override the backend for the next download |
+| Enter in Search | Submit text, browse on an empty field, or download the selected result |
+| Tab / Esc in Search | Move between the field and results / leave text editing; Esc again returns home |
+| Enter in Downloads | Expand torrent details |
+| Page Up / Page Down | Scroll expanded files and trackers |
+| Delete / X in Downloads or Seeding | Remove the selected entry and stop its transfer; keep downloaded files |
+| P / R / E in Downloads or Seeding | Pause or resume / recheck / export torrent |
+| V | Switch global VPN/direct routing |
+| Q outside text editing / Ctrl+Q anywhere | Close the interface while downloads continue |
 
-Games are the only category that can run code, so they come from FitGirl alone, a repacker with a long, trusted track record; everything else is plain video and subtitles. If a source is down, the search carries on without it, and torlink tells you which one is offline.
+In the command palette, type to filter, use Up/Down to select, Enter to run, and Esc or Ctrl+P to close. It provides page navigation, import, per-download client choice, VPN/reconnect controls, service refresh, and actions for the selected torrent. Disabled actions explain what is missing. Opening the palette preserves the underlying text, selection, settings edits, and detail scroll position, while suspending their shortcuts and hidden piece polling.
 
-## Headless
+Removing an entry from either Downloads or Seeding removes the same torrent from the managed backend and stops its transfers; its files stay on disk. The palette exposes this as **Remove selected entry**, also searchable by **delete**. Failed removal leaves the entry visible and reports the error.
 
-torlink also runs without the TUI, for servers and seedboxes:
+Page keys remain available while browsing Settings. Enter opens a field editor; digits then enter its value, and Enter or Esc returns to navigation. Unsaved settings survive page switches. Search fields support cursor movement, Home/End, deletion, and Ctrl+U to clear. Letter shortcuts apply outside text editing, so titles beginning with I, B, V, or Q work normally.
 
-    torlnk search "<query>" [--category games|movies|tv|anime]
-                            print one JSON document of merged search results
-    torlnk seed <path>    share files you already have
-    torlnk watch <dir>    download anything dropped into a folder
-    torlnk serve          take magnets over HTTP
-    torlnk files          stream finished downloads over HTTP
-    torlnk attach         keep the TUI alive across ssh sessions
+The default backend applies to future downloads. Existing downloads retain their original client. Torrent hashes are deduplicated across both clients. Shared transfer capacity and seeding policy are managed by the controller; each engine stores its resume state. The controller also saves up to 1000 lifecycle records in `controller/history.json`, including completion and removal dates. A history page is deferred.
 
-Add `--daemon` to keep seed, watch, serve, or files running after you log out; `torlnk --help` has the full list of modes and flags.
+Rows show transferred/total bytes, both speeds, ETA, peers, backend, state, and a numeric percentage. Expanded details include files, trackers, errors, uploaded bytes, ratio, elapsed time, destination, and verified/total pieces. Unknown values remain unknown. Piece maps use real engine data: `·` missing, `!` active beside a cell, partial/full blocks verified, and `?` unknown. Visible maps refresh every two seconds; statistics every second by default.
 
-### Sharing something of your own
+Routing and service health appear in a single bottom bar; page 5 shows individual service details. It reports supervisor, controller, gateway, search, qBittorrent, and WebTorrent independently, including last check and last successful response. Provider-specific search failures are reported with search results.
 
-Everything else starts with a torrent someone else made. `seed` goes the other way:
+`node dist/cli.cjs start` explicitly starts the background service without opening the interface. `node dist/cli.cjs status` prints the current state without starting a stopped service. `node dist/cli.cjs stop` is the separate action that stops the background service and containers. Closing the terminal alone keeps transfers running.
 
-    torlnk seed ./album
+## Files and isolation
 
-It turns the folder into a torrent, saves `album.torrent` next to it, prints the magnet, and starts sharing right away. Send anyone the magnet and they pull the files from you.
+Default state is `$XDG_DATA_HOME/torlnk-plus` or `~/.local/share/torlnk-plus`; override with `TORLNK_PLUS_STATE_DIR`. Configuration saves are atomic. Profile files and management credentials are owner-only, within a private state directory. Private VPN profiles and supervisor credentials are not mounted into network workers.
 
-`serve` takes a `.torrent` as well as a magnet, so you can hand it one you already have:
+The host supervisor manages five containers: gateway, controller, search, WebTorrent, qBittorrent. Workers share the gateway network namespace, use your file UID/GID, and mount selected download folders and their own state. Only the VPN gateway receives NET_ADMIN and the TUN device; DAC_OVERRIDE lets it read the private read-only configuration. Images are pinned by digest and dependencies by lockfile. The controller and qBittorrent management ports bind to localhost and require authentication; internal search/WebTorrent RPCs also require authentication. No Docker socket is mounted into workers.
 
-    POST /add {"magnet":"magnet:?xt=..."}
-    POST /add {"torrent":"<base64>"}
+Management defaults: supervisor 9161, controller 9162, qBittorrent 8080. If occupied, set `TORLNK_PLUS_PORT`, `TORLNK_PLUS_WORKER_PORT`, and `TORLNK_PLUS_QBIT_PORT` before startup, and use the same values on subsequent CLI calls. qBittorrent's internal/published WebUI ports must match for its Host validation.
 
-Either can carry a `seedTime` for that one torrent, in the same grammar as `--seed-time` (`"30d"`, `"2h"`; `0` means never stop). It wins over the daemon-wide flag, so a box that normally drops seeds after a couple of hours can keep one release alive for a month. Change it later, or on something already downloading, through the control endpoint:
+WebTorrent PEX is currently unsupported and disabled in its settings. Container WebRTC peers are disabled; ordinary TCP/UDP BitTorrent peers are supported. Extra trackers and network-affecting engine settings recreate workers when saved. Closing and reopening the interface is sufficient for other persisted display changes.
 
-    POST /control {"id":"<info hash>","action":"seed-time","seedTime":"30d"}
+## Legacy import
 
-`GET /downloads` reports the limit and when it falls due (`seedUntil`) on every torrent that has one.
+Stop upstream Torlnk before copying its records so they are consistent. Import into an empty fork state directory **before starting this fork for the first time**:
 
-## Contributing
+```sh
+node dist/cli.cjs migrate "$HOME/.config/torlink" "$HOME/.local/share/torlink"
+```
 
-To run or work on torlink locally:
+The importer backs up the source configuration, queue, history, seed records, and metadata under `legacy-backup`, without changing those source files. It copies records into the fork and marks their backend WebTorrent. Existing download folders remain their destinations and are mounted explicitly. Native piece verification runs before WebTorrent resumes data transfer. Interrupted migration can be retried with the same source paths. Import into unrelated nonempty state is refused. History remains available in the backup; v1 shows current torrent records in its download list.
 
-1. Clone the repository and open the folder.
-2. Install dependencies:
-   ```sh
-   npm install
-   ```
-3. Run the development version:
-   ```sh
-   npm run dev
-   ```
-   Or build it and run the bundled version:
-   ```sh
-   npm run build
-   npx torlnk
-   ```
+The fork has no upstream updater. `watch`, `serve`, `files`, and `attach` explain that they are deferred. Seeding is available on page 3; the former standalone `seed` mode is deferred too.
 
-Before opening a PR, skim [CONTRIBUTING.md](CONTRIBUTING.md); it lays out the bar with examples from real merged PRs.
+## Verify
 
-## Privacy
+```sh
+npm run typecheck
+npm test
+npm run verify:managed
+npm run verify:supervisor
+# Optional live test, using your own profile:
+# Stop other stacks using the same WireGuard key before testing:
+node --import ./scripts/native-loader.mjs --import tsx scripts/verify-vpn.ts /absolute/path/profile.conf
+npm run previews:plus
+```
 
-Your files stay on your disk, and nothing routes through a central server; torlink only talks to the torrent network directly. Once a download finishes it keeps seeding by default, sharing it back so the next person can find it just as easily. The network only works because people pass things along, and even a few minutes makes a real difference. If you'd rather not, opt out anytime: open the Seeding tab, press `p` to pause or stop any item, and press it again to pick it back up. Always your call.
+The managed verifier generates controlled data, transfers it through qBittorrent, checks SHA-256, and removes its isolated test containers. The automated WebTorrent suite performs real peer transfers, pause/restart, and corrupted-file repair. The supervisor verifier tests mixed clients, duplicates, routing failure/recovery, service health, and background lifetime. See [VERIFICATION.md](VERIFICATION.md) for the exact passed and unverified checks. UI captures are in `preview/plus`, including the home screen, command palette, search results, downloads, seeding, details, settings, and health at narrow and standard sizes. The redesign adapts upstream Torlnk logo, panel, and color components with the Torlnk+ wordmark; focus and layout behavior were also informed by [Textual input guidance](https://textual.textualize.io/guide/input/) and [Ratatui layout guidance](https://ratatui.rs/concepts/layout/).
+
+
+## Release evidence and preparation
+
+This is an alpha with documented limitations, not a general-platform or fully audited privacy release. The maintainer reported a successful local torrent transfer on 2026-10-04. That report is distinguished from automated controlled-file hash verification in VERIFICATION.md.
+
+From a development checkout, inspect the running managed network without changing its routing:
+
+```sh
+npm run verify:network -- --json
+# Require the running stack to be in VPN mode:
+npm run verify:network -- --require-vpn
+```
+
+The inspection checks live gateway rule policies, tunnel health, shared worker namespaces, management bindings, and disabled IPv6. It does not replace packet captures across startup, crashes, restarts, and mode changes. Direct mode is identified explicitly and does not claim VPN protection.
+
+Run `npm run verify:package -- --docker` to install and test a temporary packed release and build its worker image. `npm run release:package` creates versioned source/npm tarballs and checksums under `release/`. GitHub workflows test the supported Linux target and prepare downloadable artifacts; they do not publish automatically. See [publishing instructions](docs/PUBLISHING.md), [security limitations](SECURITY.md), and [verification evidence](VERIFICATION.md).
