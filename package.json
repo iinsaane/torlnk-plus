@@ -93,5 +93,13 @@
     "react",
     "uint8-util",
     "webtorrent"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iinsaane/torlnk-plus.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iinsaane/torlnk-plus/issues"
+  },
+  "homepage": "https://github.com/iinsaane/torlnk-plus#readme"
 }

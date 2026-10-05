@@ -5,7 +5,7 @@ The prepared version is `0.1.0-alpha.1`. Publish it as a GitHub prerelease and u
 ## Review before uploading
 
 - Read SECURITY.md, VERIFICATION.md, and CHANGELOG.md. Preserve distinctions between automated tests, maintainer-reported transfer success, and unverified environments/transports.
-- Choose the fork's GitHub owner/repository and npm publisher account. Check name availability and publishing permissions. Package metadata must point to the fork before publication, never upstream issue trackers.
+- GitHub authentication is verified as `iinsaane`. The intended repository is `iinsaane/torlnk-plus`; it has not been created or uploaded. Package metadata points to this destination. npm authentication and publisher ownership remain pending. Check package-name availability and publishing permissions before upload.
 - The current Git origin points to upstream. Add a separate `fork` remote for the chosen repository; never push this fork's release to upstream origin.
 - Retain LICENSE, README.upstream.md, and upstream attribution.
 - Run the following from a development checkout with Docker available:
@@ -37,7 +37,7 @@ The preparation workflow only uploads build artifacts to its workflow run. It do
 
 ## npm alpha
 
-`private: true` deliberately prevents publishing during local preparation. After choosing the destination and approving the reviewed release, set fork repository/bugs metadata and remove that flag. Rebuild and reverify the exact final package because those edits change its checksums.
+`private: true` deliberately prevents publishing during local preparation. After approving the reviewed release and authenticating its npm publisher, remove that flag. The prepared repository/bugs metadata already points to `iinsaane/torlnk-plus`. Rebuild and reverify the exact final package because those edits change its checksums.
 
 Authenticate using npm's supported login flow, then verify account and package ownership. Do not put credentials in repository files, archives, or CI logs. Confirm the dry run before publishing the exact tarball:
 
