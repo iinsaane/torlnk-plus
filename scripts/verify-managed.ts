@@ -10,13 +10,14 @@ import { QbittorrentBackend } from "../src/plus/backends/qbittorrent";
 
 const execFileAsync = promisify(execFile);
 const rootBase = path.resolve("work", "verify-managed");
-const waitFor = async (probe: () => Promise<boolean>, description: string, timeoutMs = 45_000) => {
+const waitFor = async (probe: () => Promise<boolean>, description: string, timeoutMs = 45_000, diagnostics?: () => Promise<string>) => {
   const end = Date.now() + timeoutMs;
   while (Date.now() < end) {
     if (await probe()) return;
     await new Promise(resolve => setTimeout(resolve, 200));
   }
-  throw new Error(`Timed out waiting for ${description}`);
+  const details = diagnostics ? await diagnostics().catch(error => `Diagnostics unavailable: ${error instanceof Error ? error.message : String(error)}`) : "";
+  throw new Error(`Timed out waiting for ${description}${details ? `\n${details}` : ""}`);
 };
 const makeBytes = (size: number, salt: number) => {
   const bytes = Buffer.alloc(size);
@@ -70,6 +71,23 @@ try {
   const status = await runtime.start("direct");
   if (status.state !== "Direct") throw new Error(`Managed runtime did not start: ${status.message || status.state}`);
   const baseUrl = runtime.qbitUrl;
+  let lastQbitProbe = "not attempted";
+  const qbitProbe = "fetch('http://127.0.0.1:18080/api/v2/app/version').then(r=>process.stdout.write(String(r.status))).catch(e=>process.stdout.write('unavailable:'+(e.cause?.code??e.name)))";
+  await waitFor(async () => {
+    try {
+      lastQbitProbe = await compose(runtime!.projectName, runtime!.composePath, "exec", "-T", "controller", "node", "-e", qbitProbe);
+      return lastQbitProbe === "401" || lastQbitProbe === "403";
+    } catch (error) {
+      lastQbitProbe = error instanceof Error ? error.message : String(error);
+      return false;
+    }
+  }, "qBittorrent WebUI readiness inside the gateway", 60_000, async () => {
+    const [services, logs] = await Promise.all([
+      compose(runtime!.projectName, runtime!.composePath, "ps", "--all").catch(error => `compose ps failed: ${String(error)}`),
+      compose(runtime!.projectName, runtime!.composePath, "logs", "--no-color", "--tail=30", "qbittorrent").catch(error => `qBittorrent logs unavailable: ${String(error)}`),
+    ]);
+    return `Last WebUI probe: ${scrub(lastQbitProbe, secretValues)}\nService state:\n${scrub(services, secretValues)}\nRecent qBittorrent logs:\n${scrub(logs, secretValues)}`;
+  });
   const deniedInside = await compose(runtime.projectName, runtime.composePath, "exec", "-T", "controller", "node", "-e", "fetch('http://127.0.0.1:18080/api/v2/app/version').then(r=>{console.log(r.status)})");
   if (!new Set(["401", "403"]).has(deniedInside)) throw new Error(`Unauthenticated qBittorrent request inside the shared gateway namespace returned HTTP ${deniedInside}`);
   const deniedHost = await fetch(`${baseUrl}/api/v2/app/version`);
