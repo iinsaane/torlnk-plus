@@ -56,7 +56,7 @@
     "Updated Gluetun 3.41.3 live Windscribe handshake is unverified; earlier live checks used 3.40.0.",
     "Full crash/startup/restart/mode-change leak matrix is unverified.",
     "TCP 443 and Stealth have no live protocol-specific verification.",
-    "Registry name check is not a reservation; npm publisher authentication and repository creation are pending."
+    "Registry name check is not a reservation; repository creation and actual registry acceptance are pending."
   ],
   "containers": {
     "finalNpmArchiveWorkerBuild": "passed independently",
@@ -69,6 +69,8 @@
     "github": "iinsaane/torlnk-plus",
     "githubAuthentication": "verified",
     "repositoryCreated": false,
-    "npmAccount": null
+    "npmAccount": "iinsaane",
+    "npmAuthentication": "verified",
+    "published": false
   }
 }

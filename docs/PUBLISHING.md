@@ -5,7 +5,7 @@ The prepared version is `0.1.0-alpha.1`. Publish it as a GitHub prerelease and u
 ## Review before uploading
 
 - Read SECURITY.md, VERIFICATION.md, and CHANGELOG.md. Preserve distinctions between automated tests, maintainer-reported transfer success, and unverified environments/transports.
-- GitHub authentication is verified as `iinsaane`. The intended repository is `iinsaane/torlnk-plus`; it has not been created or uploaded. Package metadata points to this destination. npm authentication and publisher ownership remain pending. Check package-name availability and publishing permissions before upload.
+- GitHub authentication is verified as `iinsaane`. The intended repository is `iinsaane/torlnk-plus`; it has not been created or uploaded. Package metadata points to this destination. npm authentication is also verified as `iinsaane`. No visible package currently occupies the name; the registry must still approve a first publication. Check package-name availability and publishing permissions before upload.
 - The current Git origin points to upstream. Add a separate `fork` remote for the chosen repository; never push this fork's release to upstream origin.
 - Retain LICENSE, README.upstream.md, and upstream attribution.
 - Run the following from a development checkout with Docker available:
@@ -37,7 +37,7 @@ The preparation workflow only uploads build artifacts to its workflow run. It do
 
 ## npm alpha
 
-`private: true` deliberately prevents publishing during local preparation. After approving the reviewed release and authenticating its npm publisher, remove that flag. The prepared repository/bugs metadata already points to `iinsaane/torlnk-plus`. Rebuild and reverify the exact final package because those edits change its checksums.
+The prepared package is publishable and its repository/bugs metadata points to `iinsaane/torlnk-plus`. Both GitHub and npm authentication are verified as `iinsaane`. Local dry-run verification does not upload the package. Actual public publication requires the maintainer's go-ahead; the artifact preparation workflow never publishes. Rebuild and reverify the exact final package after metadata changes because those edits change its checksums.
 
 Authenticate using npm's supported login flow, then verify account and package ownership. Do not put credentials in repository files, archives, or CI logs. Confirm the dry run before publishing the exact tarball:
 
@@ -46,4 +46,4 @@ npm publish ./release/torlnk-plus-0.1.0-alpha.1.tgz --tag alpha --access public 
 # After approval, the same command without --dry-run publishes it.
 ```
 
-Published installations can use `npm install --global --ignore-scripts torlnk-plus@alpha`. Do not point the default `latest` tag at this alpha. Registry name/permission checks and actual GitHub/npm publication are pending until the destination accounts are selected.
+Published installations can use `npm install --global --ignore-scripts torlnk-plus@alpha`. Do not point the default `latest` tag at this alpha. The package name has no visible existing registry entry. Name eligibility, actual publication, and remote CI are only established when the registry accepts the upload and GitHub runs the workflows. Both public destinations remain uncreated/unpublished pending the maintainer's go-ahead.

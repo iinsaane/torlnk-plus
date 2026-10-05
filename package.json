@@ -79,11 +79,9 @@
     "typescript": "6.0.3",
     "vitest": "4.1.11"
   },
-  "private": true,
   "publishConfig": {
     "access": "public",
-    "tag": "alpha",
-    "ignoreScripts": true
+    "tag": "alpha"
   },
   "bundleDependencies": [
     "create-torrent",

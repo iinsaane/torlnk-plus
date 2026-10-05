@@ -27,4 +27,4 @@ The container scan discovered high and critical advisories in the original Gluet
 
 ## Reporting
 
-The intended GitHub destination is `iinsaane/torlnk-plus`; it has not been uploaded. npm publisher authentication and a private security reporting channel are pending. Until a private channel is configured for the fork, do not create public issues containing credentials, private profiles, or exploit details. Security reports for this fork must not be sent to upstream Torlnk's issue tracker. Stable-release privacy and platform claims require the outstanding validation, even after alpha packaging passes.
+The intended GitHub destination is `iinsaane/torlnk-plus`; it has not been uploaded. npm authentication is verified as `iinsaane`; actual publication and a private security reporting channel are pending. Until a private channel is configured for the fork, do not create public issues containing credentials, private profiles, or exploit details. Security reports for this fork must not be sent to upstream Torlnk's issue tracker. Stable-release privacy and platform claims require the outstanding validation, even after alpha packaging passes.
