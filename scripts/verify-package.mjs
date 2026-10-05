@@ -56,7 +56,7 @@ try {
   await mkdir(unpack);
   run('tar', ['-xzf', path.join(outDir, tgz), '-C', unpack]);
   const packageFiles = await readdir(npmRoot, { recursive: true });
-  for (const required of ['package.json', 'LICENSE', 'README.md', 'README.upstream.md', 'VERIFICATION.md', 'SECURITY.md', 'CHANGELOG.md', 'docs/PUBLISHING.md', 'dist/cli.cjs', 'containers/worker.Dockerfile', 'containers/worker-package.json', 'containers/worker-package-lock.json', 'node_modules/webtorrent/package.json']) {
+  for (const required of ['package.json', 'LICENSE', 'README.md', 'README.upstream.md', 'VERIFICATION.md', 'SECURITY.md', 'CHANGELOG.md', 'CONTRIBUTING.md', 'docs/PUBLISHING.md', 'docs/USAGE.md', 'preview/plus/home-80.png', 'dist/cli.cjs', 'containers/worker.Dockerfile', 'containers/worker-package.json', 'containers/worker-package-lock.json', 'node_modules/webtorrent/package.json']) {
     if (!packageFiles.includes(required)) throw new Error(`npm archive is missing ${required}`);
   }
   const forbidden = packageFiles.filter((name) => /(^|\/)(\.env(?:\..*)?|\.state|\.ssh|secrets|work|\.git)(\/|$)|(^|\/)(?:id_rsa|id_ed25519)(?:$|\.)|\.(?:conf|ovpn|pem|key|p12|pfx)$/i.test(name));
